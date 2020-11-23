@@ -1,0 +1,4 @@
+parent_project_id_namespace	parent_project_local_id	child_project_id_namespace	child_project_local_id
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000 Pilot
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000 PCCSE
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000 GTEx

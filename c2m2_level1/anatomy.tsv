@@ -1,0 +1,37 @@
+id	name	description	synonyms
+UBERON:0000178	blood	A fluid that is composed of blood plasma and erythrocytes.	
+UBERON:0002048	lung	Respiration organ that develops as an oupocketing of the esophagus.	
+UBERON:0002097	skin of body	The organ covering the body that consists of the dermis and epidermis.	
+UBERON:0000310	breast	The upper ventral region of the torso of an organism.	
+UBERON:0000002	uterine cervix	Lower, narrow portion of the uterus where it joins with the top end of the vagina.	
+UBERON:0002481	bone tissue	Skeletal tissue with a collagen-rich extracellular matrix vascularized, mineralized with hydroxyapatite and typically including osteocytes located in lacunae that communicate with one another by cell processes (in canaliculi). Bone is deposited by osteoblasts.	
+UBERON:0002367	prostate gland	The prostate gland is a partly muscular, partly glandular body that is situated near the base of the mammalian male urethra and secretes an alkaline viscid fluid which is a major constituent of the ejaculatory fluid.	
+UBERON:0001264	pancreas	An endoderm derived structure that produces precursors of digestive enzymes and blood glucose regulating enzymes[GO].	
+UBERON:0000992	ovary	the gonad of a female organism which contains germ cells	
+UBERON:0002113	kidney	A paired organ of the urinary tract which has the production of urine as its primary function.	
+UBERON:0000160	intestine	Segment of the alimentary canal extending from the stomach to the anus and, in humans and other mammals, consists of two segments, the small intestine and the large intestine.	
+UBERON:0000059	large intestine	A subdivision of the digestive tract that connects the small intestine to the cloaca or anus. Lacks or has few villi[Kardong].	
+UBERON:0001295	endometrium	the glandular mucous membrane lining of the uterine cavity that is hormonally responsive during the estrous/menstrual cycle and during pregnancy	
+UBERON:0001016	nervous system	The nervous system is an organ system containing predominantly neuron and glial cells. In bilaterally symmetrical organism, it is arranged in a network of tree-like structures connected to a central body. The main functions of the nervous system are to regulate and control body functions, and to receive sensory input, process this information, and generate behavior [CUMBO].	
+UBERON:0002107	liver	An exocrine gland which secretes bile and functions in metabolism of protein and carbohydrate and fat, synthesizes substances involved in the clotting of the blood, synthesizes vitamin A, detoxifies poisonous substances, stores glycogen, and breaks down worn-out erythrocytes[GO].	
+UBERON:0000945	stomach	An expanded region of the vertebrate alimentary tract that serves as a food storage compartment and digestive organ. A stomach is lined, in whole or in part by a glandular epithelium.	
+UBERON:0001630	muscle organ	Organ consisting of a tissue made up of various elongated cells that are specialized to contract and thus to produce movement and mechanical work[GO].	
+UBERON:0000995	uterus	the female muscular organ of gestation in which the developing embryo or fetus is nourished until birth	
+UBERON:0006558	lymphatic part of lymphoid system	An organ system subdivision that is a network of vessels capable of removing accumulating protein and fluid from the interstitial space and returning it to the vascular space. In some species, this network is connected to the immune system via lymph nodes and lymphocyte-producing organs, with the whole being the lymphoid system.	
+UBERON:0002110	gall bladder	An organ that aids digestion and stores bile produced by the liver[WP].	
+UBERON:0001255	urinary bladder	distensible musculomembranous organ situated in the anterior part of the pelvic cavity in which urine collects before excretion[MP].	
+UBERON:0002046	thyroid gland	A two-lobed endocrine gland found in all vertebrates, located in front of and on either side of the trachea in humans, and producing various hormones, such as triiodothyronine and calcitonin[BTO].	
+UBERON:0000955	brain	The brain is the center of the nervous system in all vertebrate, and most invertebrate, animals. Some primitive animals such as jellyfish and starfish have a decentralized nervous system without a brain, while sponges lack any nervous system at all. In vertebrates, the brain is located in the head, protected by the skull and close to the primary sensory apparatus of vision, hearing, balance, taste, and smell[WP].	
+UBERON:0000974	neck	An organism subdivision that extends from the head to the pectoral girdle, encompassing the cervical vertebral column.	
+UBERON:0001043	esophagus	Tube that connects the pharynx to the stomach. In mammals, the oesophagus connects the buccal cavity with the stomach. The stratified squamous non-keratinised epithelium lining the buccal cavity is continued through the pharynx down into the oesophagus. The lowest part of the oesophagus (ca. 2 cm) is lined with gastric mucosa and covered by peritoneum. The main body of the oesophagus is lined with small, simple mucous glands. Each gland opens into the lumen by a long duct which pierces the muscularis mucosae (Wilson and Washington, 1989). A sphincter is situated at the point where the oesophagus enters the stomach to prevent gastro-oesophageal reflux, i.e. to prevent acidic gastric contents from reaching stratified epithelia of the oesophagus, where they can cause inflammation and irritation (Wilson and Washington, 1989; Brown et al., 1993).	
+UBERON:0000473	testis	A gonad of a male animal. A gonad produces and releases sperm.	
+UBERON:0000056	ureter	Muscular duct that propels urine from the kidneys to the urinary bladder, or related organs.	
+UBERON:0000977	pleura	The invaginated serous membrane that surrounds the lungs (the visceral portion) and lines the walls of the pleural cavity (parietal portion).	
+UBERON:0002369	adrenal gland	Either of a pair of complex endocrine organs near the anterior medial border of the kidney consisting of a mesodermal cortex that produces glucocorticoid, mineralocorticoid, and androgenic hormones and an ectodermal medulla that produces epinephrine and norepinephrine[BTO].	
+UBERON:0002294	biliary system	Organ system subdivision that consists of the organs and ducts that are involved in the production and transportation of bile. In most species this is the gallbladder and the bile ducts (biliary tree).	
+UBERON:0000997	mammalian vulva	external genital organs of the female mammal[WP].	
+UBERON:0011143	upper urinary tract	Subdivision of urinary system which consists of the kidney and the ureters.	
+UBERON:0001013	adipose tissue	Portion of connective tissue composed of adipocytes enmeshed in areolar tissue	
+UBERON:0007798	vascular system	Anatomical system that consists of all blood and lymph vessels.	
+UBERON:0001744	lymphoid tissue	Portion of connective tissue with various types of white blood cells enmeshed in it, most numerous being the lymphocytes[WP].	
+UBERON:0001017	central nervous system	The central nervous system is the core nervous system that serves an integrating and coordinating function. In vertebrates it consists of the neural tube derivatives: the brain and spinal cord. In invertebrates it includes central ganglia plus nerve cord.	
