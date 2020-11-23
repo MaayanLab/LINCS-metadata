@@ -1,2 +1,8 @@
 id	name	description	synonyms
 data:0928	Gene expression profile	Data quantifying the level of expression of (typically) multiple genes, derived for example from microarray experiments.	
+data:1566	Protein-ligand interaction report		
+data:2968	Image		
+data:2603	Expression data		
+data:3112	Gene expression matrix		
+data:3002	Annotation track		
+data:2563	Mass spectrometry data		

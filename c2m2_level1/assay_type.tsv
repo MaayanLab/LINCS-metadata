@@ -1,2 +1,41 @@
 id	name	description	synonyms
-OBI:0002965	L1000 mRNA profiling assay		
+OBI:0000366	metabolite profiling assay	An assay that detects and identifies chemical entities resulting from biochemical and cellular metabolism	
+OBI:0000424	transcription profiling assay	An assay that determines gene expression and transcription activity using ribonucleic acids collected from a material entity.	
+OBI:0000470	mass spectrometry assay	An assay that identifies the amount and type of material entities present in a sample by fragmenting the sample and measuring the mass-to-charge ratio of the resulting particles.	
+OBI:0000615	protein expression profiling assay	An assay that determines protein expression and translation activity using protein extracts collected from a material entity.	
+OBI:0000661	enzyme-linked immunosorbent assay	An analyte assay where binding of an enzyme linked antibody to a material entity that is immobilized on solid support is detected utilizing a chemiluminescent reaction. Depending on the setup, the enzyme-linked antibody could be binding directly to the analyte, or it serves as a secondary antibody detecting binding of the primary antibody to the analyte.	
+OBI:0000854	protein expression profiling	An analyte assay that detects specific peptides in an input material by separating it using gel electrophoresis, transfering the separated molecules to a membrane, and staining them with_ antibodies specific to the analyte molecules.	
+OBI:0000891	cell proliferation assay	A cytometry assay which measures the degree to which input cells are replicating.	
+OBI:0000893	real time polymerase chain reaction assay	An assay, based on the PCR, that amplifies and simultaneously quantifies a specific DNA molecule based on the use of complementary probes/primers. It enables both detection and quantification (as absolute number of copies or relative amount when normalized to DNA input or additional normalizing genes) of one or more specific sequences in a DNA sample.	
+OBI:0001146	binding assay	An assay with the objective to characterize the disposition of two or more material entities to form a complex.	
+OBI:0001271	RNA-seq assay	An transcription profiling assay that determines an RNA sequence by analyzing the transcibed regions of the genome and or to quantitate transcript abundance.	
+OBI:0001501	fluorescence detection assay	An assay in which a material's fluorescence is determined.	
+OBI:0001632	immuno staining assay	A assay detecting a molecular label assay in which the label is attached to an antibody so that substances are marked based on the antibody's binding specificity.	
+OBI:0001977	cytometry assay	An assay that measures properties of cells.	
+OBI:0002020	epigenetic modification assay	An assay that identifies epigenetic modifications including histone modifications, open chromatin, and DNA methylation.	
+OBI:0002039	assay for transposase-accessible chromatin using sequencing	An assay to capture the location of open chromatin, DNA-binding proteins, individual nucleosomes and chromatin compaction at nucleotide resolution by Tn5 transposase insertion.	
+OBI:0002082	reporter gene assay	An assay that detects expression of a reporter gene that was inserted under the control of a regulatory sequence of interest.	
+OBI:0002946	fluorescence imaging-based apoptosis assay (provisional OBI term)		
+OBI:0002947	fluorescence imaging based cell proliferation assay (provisional OBI term)	A cytometry assay which measures the degreee to which input cells are replicating.	
+OBI:0002948	fluorescence imaging based cell cycle state assay (provisional OBI term)		
+OBI:0002949	fluorescence imaging based cell viability assay (provisional OBI term)		
+OBI:0002950	fluorescence imaging drug synergy assay (provisional OBI term)		
+OBI:0002951	fluorescence imaging based cell morphology assay (provisional OBI term)		
+OBI:0002952	fluorescence imaging multiplex cytological profiling (provisional OBI term)		
+OBI:0002954	fluorescence imaging based protein phosphorylation state assay (provisional OBI term)		
+OBI:0002955	mass spectrometry protein state assay (provisional OBI term)		
+OBI:0002956	P100 protein and phosphoprotein quantification assay (provisional OBI term)		
+OBI:0002957	reverse phase protein array profiling assay (provisional OBI term)		
+OBI:0002958	SWATH-MS protein profiling assay (provisional OBI term)		
+OBI:0002959	tandem mass tag mass spectrometry (provisional OBI term)		
+OBI:0002960	fluorescence imaging based reporter gene assay (provisional OBI term)		
+OBI:0002961	global chromatin epigenetic profiling assay (provisional OBI term)		
+OBI:0002963	KINOMEscan assay (provisional OBI term)		
+OBI:0002964	KiNativ assay (provisional OBI term)		
+OBI:0002965	L1000 mRNA profiling assay (provisional OBI term)		
+OBI:0002966	microenvironment microarray assay (provisional OBI term)		
+OBI:0002967	microwestern meso-scale quantitative western blot assay (provisional OBI term)		
+OBI:0002968	positive/negative ion switching metabolite profiling assay (provisional OBI term)		
+OBI:0002969	cyclic immunofluorescence (provisional OBI term)		
+OBI:0002970	bead-based immunoassay for protein state (provisional OBI term)		
+OBI:0200198	tandem mass spectrometry	Tandem mass spectrometry is a data transformation that uses two or more analyzers separated by a region in which ions can be induced to fragment by transfer of energy (frequently by collision with other molecules).	

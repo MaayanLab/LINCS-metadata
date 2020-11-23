@@ -1,4 +1,11 @@
 parent_project_id_namespace	parent_project_local_id	child_project_id_namespace	child_project_local_id
-http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000 Pilot
-http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000 PCCSE
-http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000 GTEx
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS phase 2
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS phase 1
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	External
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS MCF10A project
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS joint project
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS trans-center
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	LINCS L1000
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	L1000-Phase1
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	L1000-PCCSE
+http://www.lincsproject.org/	LINCS	http://www.lincsproject.org/	L1000-GTEx
