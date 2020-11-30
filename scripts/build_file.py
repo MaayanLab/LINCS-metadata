@@ -101,12 +101,13 @@ for d in dir_paths:
         # add row to array
         metadata_arr.append(file_row)
 
-#####################################################
-##### GZIP ALL REPLICA FILES BEFORE CONTINUING ######
-#####################################################
+    #####################################################
+    ##### GZIP ALL REPLICA FILES BEFORE CONTINUING ######
+    #####################################################
+    
+    # could also do manually and split this script up into two parts
+    os.system(f'cmd /c "gzip -r {d}"')
 
-for d in dir_paths:
-    gse = d.split('/')[0]
     # store compressed file sizes
     filesize_dict = {}
 
