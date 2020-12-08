@@ -3,7 +3,8 @@ import os
 import hashlib 
 import numpy as np 
 import pandas as pd 
-from datetime import datetime
+import gzip
+import shutil
 
 dir_paths = [
     '101406/replica_sets',
@@ -40,6 +41,7 @@ columns = [
     'mime_type'
 ]
 
+# iterate through each project
 for d in dir_paths:
     gse = d.split('/')[0]
 
@@ -48,6 +50,7 @@ for d in dir_paths:
 
     metadata_arr = []
     
+    # iterate through each replica file in project
     for f in os.listdir(d):
         # store each row of the table
         file_row = []
@@ -64,23 +67,32 @@ for d in dir_paths:
                 sha256.update(chunk)
         md5_hash = md5.hexdigest()
         sha256_hash = sha256.hexdigest()
+
+        # gzip file and compute compressed size
+        with open(d + '/' + f, 'rb') as f_in:
+            with gzip.open(d + '/' + f + '.gz', 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+        size_in_bytes = os.path.getsize(d + '/' + f + '.gz')
+
+        # remove unzipped file to conserve space
+        os.remove(d + '/' + f)
         
         # FILL IN ROW BY METADATA CATEGORY
 
         # id_namespace
         file_row.append('http://www.lincsproject.org/')
         # local_id
-        file_row.append(s3_paths[gse] + f)
+        file_row.append(f + '.gz')
         # project_id_namespace
         file_row.append('http://www.lincsproject.org/')
         # project_local_id
         file_row.append(project_ids[gse])
         # persistent_id
-        file_row.append('')
+        file_row.append(s3_paths[gse] + f + '.gz')
         # creation_time
         file_row.append('')
-        # size_in_bytes; placeholder
-        file_row.append('0')
+        # size_in_bytes
+        file_row.append(size_in_bytes)
         # uncompressed_size_in_bytes
         file_row.append(uncompressed_size_in_bytes)
         # sha256
@@ -88,7 +100,7 @@ for d in dir_paths:
         # md5
         file_row.append(md5_hash)
         # filename
-        file_row.append(f)
+        file_row.append(f + '.gz')
         # file_format
         file_row.append('format:3475')
         # data_type
@@ -101,33 +113,8 @@ for d in dir_paths:
         # add row to array
         metadata_arr.append(file_row)
 
-    #####################################################
-    ##### GZIP ALL REPLICA FILES BEFORE CONTINUING ######
-    #####################################################
-    
-    # could also do manually and split this script up into two parts
-    os.system(f'cmd /c "gzip -r {d}"')
-
-    # store compressed file sizes
-    filesize_dict = {}
-
-    for f in os.listdir(d):
-        # get filename as key
-        filename = f.split('.gz')[0]
-        # map filename to compressed size
-        filesize_dict[filename] = os.path.getsize(d + '/' + f)
-
-    for row in metadata_arr:
-        # fill in size_in_bytes based on filename
-        row[6] = filesize_dict[row[10]]
-        # adjust filename to zipped filename
-        row[10] = row[10] + '.gz'
-
-    # build full array of level1 metadata
-    meta_arr = np.array(metadata_arr)
-
     fname = '/'.join([gse, 'c2m2_level1', 'file.tsv'])
-    pd.DataFrame(data=meta_arr, columns=columns).set_index('id_namespace').to_csv(fname, sep='\t')
+    pd.DataFrame(data=np.array(metadata_arr), columns=columns).set_index('id_namespace').to_csv(fname, sep='\t')
 
 # combine all file.tsv files
 pd.concat([
