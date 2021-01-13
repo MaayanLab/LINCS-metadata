@@ -28,6 +28,7 @@ columns = [
     'id_namespace',
     'local_id',
     'project_id_namespace',
+    'project_local_id'
     'persistent_id',
     'creation_time',
     'size_in_bytes',
