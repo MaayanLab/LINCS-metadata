@@ -1,0 +1,65 @@
+id_namespace	id	persistent_id	size_in_bytes	sha256	md5	filename
+http://www.lincsproject.org/	L1000CDS2	https://maayanlab.cloud/L1000CDS2/#/index				
+http://www.lincsproject.org/	LINCS_Data_Portal	http://lincsportal.ccs.miami.edu/dcic-portal/				
+http://www.lincsproject.org/	iLINCS	http://www.ilincs.org/ilincs/				
+http://www.lincsproject.org/	piLINCS	http://eh3.uc.edu/pilincs/				
+http://www.lincsproject.org/	slicr	https://amp.pharm.mssm.edu/slicr/#/search				
+http://www.lincsproject.org/	P100_GCP_Mosaic	https://amp.pharm.mssm.edu/p100mosaic				
+http://www.lincsproject.org/	MEP_Mosaic	https://amp.pharm.mssm.edu/MEPmosaic				
+http://www.lincsproject.org/	GEN3VA	https://amp.pharm.mssm.edu/gen3va/				
+http://www.lincsproject.org/	Harmonizome	https://maayanlab.cloud/Harmonizome/				
+http://www.lincsproject.org/	Enrichr	https://maayanlab.cloud/Enrichr/				
+http://www.lincsproject.org/	GEO2Enrichr	https://amp.pharm.mssm.edu/g2e/				
+http://www.lincsproject.org/	PAEA_Principal_Angle_Enrichr_Analysis_	https://amp.pharm.mssm.edu/PAEA/				
+http://www.lincsproject.org/	CREEDS	https://amp.pharm.mssm.edu/CREEDS/				
+http://www.lincsproject.org/	SEP-L1000	http://maayanlab.net/SEP-L1000/				
+http://www.lincsproject.org/	LINCS_Canvas_Browser	http://www.maayanlab.net/LINCS/LCB/				
+http://www.lincsproject.org/	Drug_Cell-Line_Browser	http://www.maayanlab.net/LINCS/DCB/				
+http://www.lincsproject.org/	Network2Canvas	http://www.maayanlab.net/N2C/				
+http://www.lincsproject.org/	Crowdsourcing_Portal	http://www.maayanlab.net/crowdsourcing/				
+http://www.lincsproject.org/	GUIdock	https://github.com/WebDataScience/GUIdock				
+http://www.lincsproject.org/	ARCHS4	https://amp.pharm.mssm.edu/archs4/				
+http://www.lincsproject.org/	Datasets2Tools	https://amp.pharm.mssm.edu/datasets2tools/				
+http://www.lincsproject.org/	Cite-D-Lite	https://chrome.google.com/webstore/detail/cite-d-lite/ipiffhgeigmiffclkpkgdaklbdgdegkk?hl=en				
+http://www.lincsproject.org/	BioJupies	https://amp.pharm.mssm.edu/biojupies/				
+http://www.lincsproject.org/	Drug_Gene_Budger	https://maayanlab.cloud/DGB/ , Mobile App: https://apps.apple.com/us/app/drug-gene-budger/id1243580241?%2520mt=8 				
+http://www.lincsproject.org/	EnrichrBot	https://twitter.com/botenrichr				
+http://www.lincsproject.org/	L1000FWD	https://maayanlab.cloud/L1000FWD/				
+http://www.lincsproject.org/	LINCS_Joint_Project_-_Breast_Cancer_Network_Browser	https://amp.pharm.mssm.edu/LJP/				
+http://www.lincsproject.org/	GRcalculator_GR_Browser	http://www.grcalculator.org/grtutorial/Home.html				
+http://www.lincsproject.org/	SynergySeq	https://schurerlab.shinyapps.io/synergyseq/				
+http://www.lincsproject.org/	modEnrichr	https://amp.pharm.mssm.edu/modEnrichr/				
+http://www.lincsproject.org/	Geneshot	https://amp.pharm.mssm.edu/geneshot/				
+http://www.lincsproject.org/	ChEA3	https://maayanlab.cloud/chea3/				
+http://www.lincsproject.org/	X2K_expression2kinases_Web	https://amp.pharm.mssm.edu/X2K/				
+http://www.lincsproject.org/	GREIN:_GEO_RNA-seq_Experiments_Interactive_Navigator	http://www.ilincs.org/apps/grein/?gse=				
+http://www.lincsproject.org/	Drug-Pathway_Browser	https://lincs.hms.harvard.edu/explore/pathway/				
+http://www.lincsproject.org/	CLUE_Repurposing_App	https://clue.io/repurposing-app				
+http://www.lincsproject.org/	CLUE_Platform	https://clue.io/				
+http://www.lincsproject.org/	Drug_Response_Browser	https://lincs.hms.harvard.edu/explore/10.1038-nchembio.1337/fallahi-sichani-2013/				
+http://www.lincsproject.org/	LINCS_Data_Explorer	https://www.synapse.org/#!Synapse:syn2862345/wiki/410135				
+http://www.lincsproject.org/	OmicsIntegrator	http://fraenkel-nsf.csbi.mit.edu/omicsintegrator/				
+http://www.lincsproject.org/	TieDIE	https://sysbiowiki.soe.ucsc.edu/tiedie				
+http://www.lincsproject.org/	HMS_LINCS_Breast_Cancer_Browser	http://www.cancerbrowser.org/				
+http://www.lincsproject.org/	HMS_LINCS_Database	https://lincs.hms.harvard.edu/db/				
+http://www.lincsproject.org/	Touchstone_App	https://clue.io/touchstone				
+http://www.lincsproject.org/	cynetworkbrowser	https://cynetworkbrowser.umt.edu				
+http://www.lincsproject.org/	Cell_Dynamics_Browser	https://lincs.hms.harvard.edu/explore/single-cell-dynamics/				
+http://www.lincsproject.org/	AChroMap	http://achromap.neurolincs.org/shiny/achromap/				
+http://www.lincsproject.org/	slinky	https://bioconductor.org/packages/devel/bioc/html/slinky.html				
+http://www.lincsproject.org/	ImageRail	https://www.nature.com/articles/nmeth.1600				
+http://www.lincsproject.org/	DToxS_Portal	https://martip03.u.hpc.mssm.edu/ , https://martip03.u.hpc.mssm.edu/data.php				
+http://www.lincsproject.org/	PIUMet	http://fraenkel-nsf.csbi.mit.edu/piumet2/				
+http://www.lincsproject.org/	HMS_LINCS_Adaptation_Browser	https://lincs.hms.harvard.edu/explore/adaptive-drug-resistance/vips/				
+http://www.lincsproject.org/	Morpheus_App	https://clue.io/morpheus				
+http://www.lincsproject.org/	ICV_App	? https://clue.io/data?upload=1				
+http://www.lincsproject.org/	GF_Response_Browser_1	https://lincs.hms.harvard.edu/explore/breast-cancer-signaling/				
+http://www.lincsproject.org/	GF_Response_Browser_2	http://www.cancerbrowser.org/dataset/growth_factor_pakt_perk				
+http://www.lincsproject.org/	OMERO	https://lincs-omero.hms.harvard.edu/webclient/userdata/?experimenter=-1 ; https://www.openmicroscopy.org/omero/				
+http://www.lincsproject.org/	Phosphosite_Plus	https://www.phosphosite.org//homeAction.action				
+http://www.lincsproject.org/	RTK_Profile_Browser	https://lincs.hms.harvard.edu/explore/responses/				
+http://www.lincsproject.org/	LINCS_Mobile_Project	https://lincsproject.org/LINCS/mobile				
+http://www.lincsproject.org/	Clarion	https://www.lincsclarion.org/#/				
+http://www.lincsproject.org/	Panorama	https://panoramaweb.org/LINCS/P100/project-begin.view? ; ? https://panoramaweb.org/wiki/LINCS/Overview%20Information/page.view?name=LINCS%20PCCSE%20Overview				
+http://www.lincsproject.org/	PiNET	http://eh3.uc.edu/pinet/peptideToProtein , http://www.pinet-server.org/pinet/peptideToProtein				
+http://www.lincsproject.org/	Small_Molecule_Suite	https://labsyspharm.shinyapps.io/smallmoleculesuite/				
