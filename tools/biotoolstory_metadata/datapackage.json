@@ -1,0 +1,220 @@
+{
+    "profile": "tabular-data-package",
+    "name": "table_schema_specs_for_lincs_tools",
+    "title": "Schematic specifications for manifest of LINCS tools and associated metadata",
+    "resources": [
+        {
+            "profile": "tabular-data-resource",
+            "name": "tools",
+            "title": "tools",
+            "path": "tools.tsv",
+            "description": "LINCS tools manifest",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "PMID",
+                        "description": "list of pubmed ids",
+                        "type": "array"
+                    },
+                    {
+                        "name": "tool_homepage_url",
+                        "description": "link to the article",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Tool_Name",
+                        "description": "name of the tool",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Country",
+                        "description": "author country",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Tool_Description",
+                        "description": "short description of the tool's functionality",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Article_Title",
+                        "description": "title of the article",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Citations",
+                        "description": "number of citations as indicated on pubmed",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Article_Language",
+                        "description": "language of the article",
+                        "type": "array"
+                    },
+                    {
+                        "name": "Article_Date",
+                        "description": "publication date of the article (%Y-%m-%d)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ISSN",
+                        "description": "electronic ISSN - matches to ISSN on the journals schema",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Journal_Title",
+                        "description": "journal full name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Altmetric_Score",
+                        "description": "score of the article on altmetric",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Readers_Count",
+                        "description": "number of readers as reported on altmetric",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Readers_in_Mendele",
+                        "description": "number of readers on Mendele as reported on altmetric",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Readers_in_Connote",
+                        "description": "number of readers on Connote as reported on altmetric",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Readers_in_Citeulike",
+                        "description": "number of readers on Citeulike as reported on altmetric",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Cited_By_Posts_Count",
+                        "description": "number of social media posts on tha article as reported on altmetric",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Twitter_accounts_that_tweeted_this_publication",
+                        "description": "based on altmetric data",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Users_who_mentioned_the_publication_on_Twitter",
+                        "description": "based on altmetric data",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Scientists_who_mentioned_the_publication_on_Twitter",
+                        "description": "based on altmetric data",
+                        "type": "number"
+                    },
+                    {
+                        "name": "News_sources_that_mentioned_the_publication",
+                        "description": "based on altmetric data",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Mentions_in_social_media",
+                        "description": "based on altmetric data",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Topic",
+                        "description": "list of topics",
+                        "type": "array"
+                    },
+                    {
+                        "name": "Institution",
+                        "description": "institution affiliation",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Last_Author",
+                        "description": "",
+                        "type": "object"
+                    },
+                    {
+                        "name": "Author_Information",
+                        "description": "names of authors",
+                        "type": "array"
+                    },
+                    {
+                        "name": "Abstract",
+                        "description": "article abstract",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Electronic_Location_Identifier",
+                        "description": "doi of the article",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Publication_Type",
+                        "description": "Publication_Type",
+                        "type": "array"
+                    },
+                    {
+                        "name": "Grant_List",
+                        "description": "list of grant ids",
+                        "type": "array"
+                    },
+                    {
+                        "name": "Chemical_List",
+                        "description": "list of chemicals",
+                        "type": "array"
+                    },
+                    {
+                        "name": "KeywordList",
+                        "description": "list of article keywords",
+                        "type": "array"
+                    }
+                ]
+            }
+        },
+        {
+            "profile": "tabular-data-resource",
+            "name": "id_namespace",
+            "title": "id_namespace",
+            "path": "id_namespace.tsv",
+            "description": "INTERNAL CV: Dictionary of CFDE-generated identifier namespaces corresponding to top-level C2M2 metadatasets",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "description": "A globally unique ID representing this identifier namespace",
+                        "type": "string",
+                        "constraints": {
+                            "required": true,
+                            "unique": true
+                        }
+                    },
+                    {
+                        "name": "abbreviation",
+                        "description": "A very short display label for this identifier namespace",
+                        "type": "string",
+                        "constraints": {
+                            "pattern": "^[a-zA-Z0-9_]+$"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "description": "A short, human-readable, machine-read-friendly label for this identifier namespace",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "description": "A human-readable description of this identifier namespace",
+                        "type": "string"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ],
+                "primaryKey": "id"
+            }
+        }
+    ]
+}
