@@ -8,18 +8,26 @@
             "name": "tools",
             "title": "tools",
             "path": "tools.tsv",
+            "format": "tsv",
             "description": "LINCS tools manifest",
             "schema": {
                 "fields": [
                     {
                         "name": "Tool_Name",
                         "description": "name of the tool",
-                        "type": "string"
+                        "type": "string",
+                        "constraints": {
+                            "required": true,
+                            "unique": true
+                        }
                     },
                     {
                         "name": "tool_homepage_url",
                         "description": "link to the article",
-                        "type": "string"
+                        "type": "string",
+                        "constraints": {
+                            "required": true
+                        }
                     },
                     {
                         "name": "Tool_Description",
@@ -72,19 +80,9 @@
                         "type": "string"
                     },
                     {
-                        "name": "Grant_List",
-                        "description": "list of grant ids",
-                        "type": "array"
-                    },
-                    {
                         "name": "Citations",
                         "description": "number of citations as indicated on pubmed",
                         "type": "integer"
-                    },
-                    {
-                        "name": "KeywordList",
-                        "description": "list of article keywords",
-                        "type": "array"
                     },
                     {
                         "name": "Readers_Count",
@@ -130,33 +128,10 @@
                         "name": "Country",
                         "description": "author country",
                         "type": "string"
-                    },
-                    {
-                        "name": "Article_Language",
-                        "description": "language of the article",
-                        "type": "array"
-                    },
-                    {
-                        "name": "Topic",
-                        "description": "list of topics",
-                        "type": "array"
-                    },
-                    {
-                        "name": "Last_Author",
-                        "description": "",
-                        "type": "object"
-                    },
-                    {
-                        "name": "Author_Information",
-                        "description": "names of authors",
-                        "type": "array"
-                    },
-                    {
-                        "name": "Publication_Type",
-                        "description": "Publication_Type",
-                        "type": "array"
                     }
-                ]
+                ],
+                "missingValues": [ "" ],
+                "primaryKey": "Tool_Name" 
             }
         }
     ]
