@@ -42,7 +42,7 @@
                     {
                         "name": "PMID",
                         "description": "list of pubmed ids",
-                        "type": "array"
+                        "type": "integer"
                     },
                     {
                         "name": "Electronic_Location_Identifier",
