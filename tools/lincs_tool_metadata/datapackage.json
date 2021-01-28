@@ -57,7 +57,7 @@
                     {
                         "name": "Article_Date",
                         "description": "publication date of the article",
-                        "type": "date"
+                        "type": "string"
                     },
                     {
                         "name": "Abstract",
@@ -92,7 +92,7 @@
                     {
                         "name": "Altmetric_Score",
                         "description": "score of the article on altmetric",
-                        "type": "number"
+                        "type": "integer"
                     },
                     {
                         "name": "Facebook_Shares",
@@ -117,7 +117,7 @@
                     {
                         "name": "Scientists_who_mentioned_the_publication_on_Twitter",
                         "description": "based on altmetric data",
-                        "type": "number"
+                        "type": "integer"
                     },
                     {
                         "name": "Institution",
