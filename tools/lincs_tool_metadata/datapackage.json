@@ -35,6 +35,11 @@
                         "type": "string"
                     },
                     {
+                        "name": "Available",
+                        "description": "tool is currently available for use",
+                        "type": "boolean"
+                    },
+                    {
                         "name": "Center",
                         "description": "lincs center responsible for tool",
                         "type": "string"
