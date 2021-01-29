@@ -1,0 +1,842 @@
+{
+ "@context": {
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+  "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  "geojson": "https://purl.org/geojson/vocab#",
+  "@vocab": "https://schema.org/"
+ },
+ "@graph": [
+  {
+   "@context": {
+    "id_namespace": {
+     "@type": "id_namespace",
+     "@id": "id_namespace"
+    },
+    "id": {
+     "@type": "xsd:string",
+     "@id": "id"
+    },
+    "persistent_id": {
+     "@type": "xsd:string",
+     "@id": "persistent_id"
+    },
+    "size_in_bytes": {
+     "@type": "xsd:integer",
+     "@id": "size_in_bytes"
+    },
+    "sha256": {
+     "@type": "xsd:string",
+     "@id": "sha256"
+    },
+    "md5": {
+     "@type": "xsd:string",
+     "@id": "md5"
+    },
+    "filename": {
+     "@type": "xsd:string",
+     "@id": "filename"
+    }
+   },
+   "@graph": [
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "L1000CDS2",
+     "persistent_id": "https://maayanlab.cloud/L1000CDS2/#/index",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "LINCS_Data_Portal",
+     "persistent_id": "http://lincsportal.ccs.miami.edu/dcic-portal/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "iLINCS",
+     "persistent_id": "http://www.ilincs.org/ilincs/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "piLINCS",
+     "persistent_id": "http://eh3.uc.edu/pilincs/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "slicr",
+     "persistent_id": "https://amp.pharm.mssm.edu/slicr/#/search",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "P100_GCP_Mosaic",
+     "persistent_id": "https://amp.pharm.mssm.edu/p100mosaic",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "MEP_Mosaic",
+     "persistent_id": "https://amp.pharm.mssm.edu/MEPmosaic",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GEN3VA",
+     "persistent_id": "https://amp.pharm.mssm.edu/gen3va/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Harmonizome",
+     "persistent_id": "https://maayanlab.cloud/Harmonizome/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Enrichr",
+     "persistent_id": "https://maayanlab.cloud/Enrichr/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GEO2Enrichr",
+     "persistent_id": "https://amp.pharm.mssm.edu/g2e/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "PAEA_Principal_Angle_Enrichr_Analysis_",
+     "persistent_id": "https://amp.pharm.mssm.edu/PAEA/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "CREEDS",
+     "persistent_id": "https://amp.pharm.mssm.edu/CREEDS/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "SEP-L1000",
+     "persistent_id": "http://maayanlab.net/SEP-L1000/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "LINCS_Canvas_Browser",
+     "persistent_id": "http://www.maayanlab.net/LINCS/LCB/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Drug_Cell-Line_Browser",
+     "persistent_id": "http://www.maayanlab.net/LINCS/DCB/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Network2Canvas",
+     "persistent_id": "http://www.maayanlab.net/N2C/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Crowdsourcing_Portal",
+     "persistent_id": "http://www.maayanlab.net/crowdsourcing/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GUIdock",
+     "persistent_id": "https://github.com/WebDataScience/GUIdock",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "ARCHS4",
+     "persistent_id": "https://amp.pharm.mssm.edu/archs4/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Datasets2Tools",
+     "persistent_id": "https://amp.pharm.mssm.edu/datasets2tools/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Cite-D-Lite",
+     "persistent_id": "https://chrome.google.com/webstore/detail/cite-d-lite/ipiffhgeigmiffclkpkgdaklbdgdegkk?hl=en",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "BioJupies",
+     "persistent_id": "https://amp.pharm.mssm.edu/biojupies/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Drug_Gene_Budger",
+     "persistent_id": "https://maayanlab.cloud/DGB/ , Mobile App: https://apps.apple.com/us/app/drug-gene-budger/id1243580241?%2520mt=8 ",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "EnrichrBot",
+     "persistent_id": "https://twitter.com/botenrichr",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "L1000FWD",
+     "persistent_id": "https://maayanlab.cloud/L1000FWD/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "LINCS_Joint_Project_-_Breast_Cancer_Network_Browser",
+     "persistent_id": "https://amp.pharm.mssm.edu/LJP/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GRcalculator_GR_Browser",
+     "persistent_id": "http://www.grcalculator.org/grtutorial/Home.html",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "SynergySeq",
+     "persistent_id": "https://schurerlab.shinyapps.io/synergyseq/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "modEnrichr",
+     "persistent_id": "https://amp.pharm.mssm.edu/modEnrichr/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Geneshot",
+     "persistent_id": "https://amp.pharm.mssm.edu/geneshot/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "ChEA3",
+     "persistent_id": "https://maayanlab.cloud/chea3/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "X2K_expression2kinases_Web",
+     "persistent_id": "https://amp.pharm.mssm.edu/X2K/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GREIN:_GEO_RNA-seq_Experiments_Interactive_Navigator",
+     "persistent_id": "http://www.ilincs.org/apps/grein/?gse=",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Drug-Pathway_Browser",
+     "persistent_id": "https://lincs.hms.harvard.edu/explore/pathway/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "CLUE_Repurposing_App",
+     "persistent_id": "https://clue.io/repurposing-app",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "CLUE_Platform",
+     "persistent_id": "https://clue.io/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Drug_Response_Browser",
+     "persistent_id": "https://lincs.hms.harvard.edu/explore/10.1038-nchembio.1337/fallahi-sichani-2013/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "LINCS_Data_Explorer",
+     "persistent_id": "https://www.synapse.org/#!Synapse:syn2862345/wiki/410135",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "OmicsIntegrator",
+     "persistent_id": "http://fraenkel-nsf.csbi.mit.edu/omicsintegrator/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "TieDIE",
+     "persistent_id": "https://sysbiowiki.soe.ucsc.edu/tiedie",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "HMS_LINCS_Breast_Cancer_Browser",
+     "persistent_id": "http://www.cancerbrowser.org/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "HMS_LINCS_Database",
+     "persistent_id": "https://lincs.hms.harvard.edu/db/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Touchstone_App",
+     "persistent_id": "https://clue.io/touchstone",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "cynetworkbrowser",
+     "persistent_id": "https://cynetworkbrowser.umt.edu",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Cell_Dynamics_Browser",
+     "persistent_id": "https://lincs.hms.harvard.edu/explore/single-cell-dynamics/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "AChroMap",
+     "persistent_id": "http://achromap.neurolincs.org/shiny/achromap/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "slinky",
+     "persistent_id": "https://bioconductor.org/packages/devel/bioc/html/slinky.html",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "ImageRail",
+     "persistent_id": "https://www.nature.com/articles/nmeth.1600",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "DToxS_Portal",
+     "persistent_id": "https://martip03.u.hpc.mssm.edu/ , https://martip03.u.hpc.mssm.edu/data.php",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "PIUMet",
+     "persistent_id": "http://fraenkel-nsf.csbi.mit.edu/piumet2/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "HMS_LINCS_Adaptation_Browser",
+     "persistent_id": "https://lincs.hms.harvard.edu/explore/adaptive-drug-resistance/vips/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Morpheus_App",
+     "persistent_id": "https://clue.io/morpheus",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "ICV_App",
+     "persistent_id": "https://clue.io/data?upload=1",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GF_Response_Browser_1",
+     "persistent_id": "https://lincs.hms.harvard.edu/explore/breast-cancer-signaling/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "GF_Response_Browser_2",
+     "persistent_id": "http://www.cancerbrowser.org/dataset/growth_factor_pakt_perk",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "OMERO",
+     "persistent_id": "https://lincs-omero.hms.harvard.edu/webclient/userdata/?experimenter=-1 ; https://www.openmicroscopy.org/omero/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Phosphosite_Plus",
+     "persistent_id": "https://www.phosphosite.org//homeAction.action",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "RTK_Profile_Browser",
+     "persistent_id": "https://lincs.hms.harvard.edu/explore/responses/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "LINCS_Mobile_Project",
+     "persistent_id": "https://lincsproject.org/LINCS/mobile",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Clarion",
+     "persistent_id": "https://www.lincsclarion.org/#/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Panorama",
+     "persistent_id": "https://panoramaweb.org/LINCS/P100/project-begin.view? ; ? https://panoramaweb.org/wiki/LINCS/Overview%20Information/page.view?name=LINCS%20PCCSE%20Overview",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "PiNET",
+     "persistent_id": "http://eh3.uc.edu/pinet/peptideToProtein , http://www.pinet-server.org/pinet/peptideToProtein",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    },
+    {
+     "@type": "file",
+     "id_namespace": {
+      "@id": "_:id_namespace#http://www.lincsproject.org/"
+     },
+     "id": "Small_Molecule_Suite",
+     "persistent_id": "https://labsyspharm.shinyapps.io/smallmoleculesuite/",
+     "size_in_bytes": null,
+     "sha256": null,
+     "md5": null,
+     "filename": null
+    }
+   ]
+  },
+  {
+   "@context": {
+    "id": {
+     "@id": "id_namespace",
+     "@type": "@id"
+    },
+    "abbreviation": {
+     "@type": "xsd:string",
+     "@id": "abbreviation"
+    },
+    "name": {
+     "@type": "xsd:string",
+     "@id": "name"
+    },
+    "description": {
+     "@type": "xsd:string",
+     "@id": "description"
+    }
+   },
+   "@graph": [
+    {
+     "@type": "id_namespace",
+     "@id": "_:id_namespace#http://www.lincsproject.org/",
+     "id": "http://www.lincsproject.org/",
+     "abbreviation": "LINCS",
+     "name": "Library of Integrated Network-Based Cellular Signatures",
+     "description": "A library that catalogs changes that occur when different types of cells are exposed to a variety of agents that disrupt normal cellular functions"
+    }
+   ]
+  }
+ ]
+}
