@@ -28,7 +28,7 @@ columns = [
     'id_namespace',
     'local_id',
     'project_id_namespace',
-    'project_local_id'
+    'project_local_id',
     'persistent_id',
     'creation_time',
     'size_in_bytes',
@@ -115,7 +115,7 @@ for d in dir_paths:
         metadata_arr.append(file_row)
 
     fname = '/'.join([gse, 'c2m2_level1', 'file.tsv'])
-    pd.DataFrame(data=np.array(metadata_arr), columns=columns).set_index('id_namespace').to_csv(fname, sep='\t')
+    pd.DataFrame(data=np.array(metadata_arr), columns=columns).astype({'size_in_bytes': 'int32', 'uncompressed_size_in_bytes': 'int32'}).set_index('id_namespace').to_csv(fname, sep='\t')
 
 # combine all file.tsv files
 pd.concat([
