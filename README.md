@@ -3,4 +3,6 @@ This repo was established to place the LINCS metadata files that were converted 
 
 ## Cloning
 
-Files in this repository regularly exceed github's 100MB and so we're forced to use `git-lfs`. Please install it with `git lfs install` prior to cloning this repository for the simplest experience. For more information, please consult with [git-lfs's documentation](https://git-lfs.github.com/)
+Files in this repository regularly exceed github's 100MB and so we're forced to use `git-lfs`.
+
+Please install git-lfs for your system using the instructions on <https://docs.github.com/en/github/managing-large-files/installing-git-large-file-storage>. This involves an independent binary which integrates with git. **After this is installed**, `git lfs install` will activate the extension on all repositories. Then cloning this repository will become seemless. Please note that issues with older versions of git have been reported, please ensure git is up to date before installing git lfs.
