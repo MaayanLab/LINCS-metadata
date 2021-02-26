@@ -77,3 +77,11 @@ UBERON:0002190	subcutaneous adipose tissue
 UBERON:0010414	omental fat pad	encapsulated adipose tissue associated with the fold of peritoneal tissue that extends from the stomach to the posterior abdominal wall after associating with the transverse colon [MP:MP]	
 UBERON:0003889	fallopian tube	Initial section of the oviduct through which the ova pass from the ovary to the uterus [http://orcid.org/0000-0002-6601-2165, MGI:smb, MP:0003574]	
 UBERON:0002119	left ovary	An ovary that is part of a left side of organism [Automatically generated definition]. [OBOL:automatic]	
+UBERON:0002371	bone marrow	the soft tissue that fills the cavities of bones	
+UBERON:0014892	skeletal muscle organ	A muscle organ that consists of skeletal muscle tissue ensheathed in epimysium, that develops from myotome and that is innervated by some somatic motor neuron. Skeletal muscles are typically attached (via a tendon) to a bone but there are exceptions (e.g. intrinsic tongue muscles).	
+UBERON:0001981	blood vessel	A vessel through which blood circulates in the body.	
+UBERON:0000948	heart	A myogenic muscular circulatory organ found in the vertebrate cardiovascular system composed of chambers of cardiac muscle. It is the primary circulatory organ.	
+UBERON:0001021	nerve	An enclosed, cable-like bundle of axons in the peripheral nervous system originating in a nerve root in the central nervous system (or a condensed nervous structure) connecting with peripheral structures.	
+UBERON:0001155	colon	Last portion of the large intestine before it becomes the rectum.	
+UBERON:0001044	saliva-secreting gland	saliva-secreting exocrine glands of the oral cavity[GO]	
+UBERON:0002108	small intestine	Subdivision of digestive tract that connects the stomach to the large intestine and is where much of the digestion and absorption of food takes place (with the exception of ruminants). The mammalian small intestine is long and coiled and can be differentiated histologically into: duodenum, jejunem, ileum[WP,cjm,Kardong]. [ http://en.wikipedia.org/wiki/Small_intestine https://www.worldcat.org/search?q=bn%3A0073040584 ]	
