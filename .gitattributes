@@ -1,1 +1,2 @@
 c2m2_level1/file.tsv filter=lfs diff=lfs merge=lfs -text
+versioned/versioned_file.tsv filter=lfs diff=lfs merge=lfs -text
