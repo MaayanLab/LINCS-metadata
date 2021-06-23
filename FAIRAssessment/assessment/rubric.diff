@@ -1,0 +1,867 @@
+--- old/rubric.py	2021-06-21 10:33:55.590993646 -0400
++++ rubric.py	2021-06-22 18:05:28.527711148 -0400
+@@ -3,17 +3,17 @@
+ '''
+ 
+ #%%
+-import re
+-import time
+ import requests
+-import traceback
+-from ontology_parsing import OBOOntology, CellosaurusOntology
+-from utils import filter_empty, one_and_only, fetch_cache
++import urllib.parse
++from ontology.parser.obo import OBOOntology
++from ontology.parser.cellosaurus import CellosaurusOntology
++from ontology.parser.ncbigene import NCBIGeneOntology
++from utils import fetch_cache
+ 
+ metrics = {}
+ rubric = {
+-  '@id': 36,
+-  'name': 'NIH CFDE Interoperability',
++  '@id': 107,
++  'name': 'NIH Common Fund Data Ecosystem: LINCS (CFDE-LINCS) FAIR Rubric',
+   'description': 'This rubric identifies aspects of the metadata models which promote interoperable dataset querying and filtering',
+   'metrics': metrics,
+ }
+@@ -34,202 +34,28 @@
+   # metadata license (117) (c2m2 ?)
+   '@id': 106,
+   'name': 'Metadata conformance',
+-  'description': 'The metadata properly conforms with the CFDE perscribed metadata model specification',
++  'description': 'The metadata properly conforms with the metadata model specification',
+   'principle': 'Findable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  file_query = lambda: CFDE.tables['file'].filter((
+-    CFDE.tables['file'].id_namespace == file['id_namespace']
+-  ) & (
+-    CFDE.tables['file'].local_id == file['local_id']
+-  ))
+-  # 25% file completeness
+-  file_completeness = [len(list(filter_empty(file.values()))) / len(CFDE.tables['file'].column_definitions.keys())]
+-  # 25% biosample completeness
+-  biosample_completeness = []
+-  biosamples = file_query().link(
+-    CFDE.tables['file_describes_biosample'], on=((
+-      CFDE.tables['file'].id_namespace == CFDE.tables['file_describes_biosample'].file_id_namespace
+-    ) & (
+-      CFDE.tables['file'].local_id == CFDE.tables['file_describes_biosample'].file_local_id
+-    ))
+-  ).link(
+-    CFDE.tables['biosample'], on=((
+-      CFDE.tables['file_describes_biosample'].biosample_id_namespace == CFDE.tables['biosample'].id_namespace
+-    ) & (
+-      CFDE.tables['file_describes_biosample'].biosample_local_id == CFDE.tables['biosample'].local_id
+-    ))
+-  ).entities()
+-  for biosample in biosamples:
+-    biosample_completeness.append(
+-      len(list(filter_empty(biosample.values()))) / len(CFDE.tables['biosample'].column_definitions.keys())
+-    )
+-  # 25% subject completeness
+-  subject_completeness = []
+-  subjects = file_query().link(
+-    CFDE.tables['file_describes_subject'], on=((
+-       CFDE.tables['file'].id_namespace == CFDE.tables['file_describes_subject'].file_id_namespace
+-    ) & (
+-       CFDE.tables['file'].local_id == CFDE.tables['file_describes_subject'].file_local_id
+-    ))
+-  ).link(
+-    CFDE.tables['subject'], on=((
+-       CFDE.tables['file_describes_subject'].subject_id_namespace == CFDE.tables['subject'].id_namespace
+-    ) & (
+-       CFDE.tables['file_describes_subject'].subject_local_id == CFDE.tables['subject'].local_id
+-    ))
+-  ).entities()
+-  for subject in subjects:
+-    subject_completeness.append(
+-      len(list(filter_empty(subject.values()))) / len(CFDE.tables['subject'].column_definitions.keys())
+-    )
+-  # 25% project completeness
+-  project_completeness = {}
+-  #
+-  projects = CFDE.tables['project'].filter((
+-    CFDE.tables['project'].id_namespace == file['project_id_namespace']
+-  ) & (
+-    CFDE.tables['project'].local_id == file['project_local_id']
+-  ))
+-  project_entities = list(projects.entities())
+-  #
+-  while project_entities:
+-    project = one_and_only(project_entities)
+-    project_completeness[url_join(project['id_namespace'], project['local_id'])] = len(list(filter_empty(project.values()))) / len(CFDE.tables['project'].column_definitions.keys())
+-    #
+-    p1, pip, p2 = CFDE.tables['project'].alias('p1'), CFDE.tables['project_in_project'].alias('pip'), CFDE.tables['project'].alias('p2')
+-    path = p1.path.filter(((p1.id_namespace == project['id_namespace']) & (p1.local_id == project['local_id'])))
+-    path = path.link(pip, on=((path.p1.id_namespace == pip.child_project_id_namespace) & (path.p1.local_id == pip.child_project_local_id)))
+-    path = path.link(p2, on=((path.pip.parent_project_id_namespace == p2.id_namespace) & (path.pip.parent_project_local_id == p2.local_id)))
+-    projects = path
+-    project_entities = list(projects.entities())
+-  #
+-  file_completeness = (sum(file_completeness) / len(file_completeness)) if file_completeness else 0.
+-  biosample_completeness = sum(biosample_completeness) / len(biosample_completeness) if biosample_completeness else 0.
+-  subject_completeness = sum(subject_completeness) / len(subject_completeness) if subject_completeness else 0.
+-  project_completeness = sum(project_completeness.values()) / len(project_completeness) if project_completeness else 0.
+-  complete_completeness = sum([
+-    0.25 * file_completeness,
+-    0.25 * biosample_completeness,
+-    0.25 * subject_completeness,
+-    0.25 * project_completeness,
+-  ])
+-  #
+-  yield {
+-    'value': complete_completeness,
+-    'comment': 'Computed based on completeness of file ({:.2f}) and associated biosample ({:.2f}), subject ({:.2f}), and projects ({:.2f})'.format(
+-      file_completeness,
+-      biosample_completeness,
+-      subject_completeness,
+-      project_completeness,
+-    )
+-  }
++def _(signature, sigcom_validator_client=None, **kwargs):
++  if '$validator' in signature['meta']:
++    if signature['meta']['$validator'] == '/dcic/signature-commons-schema/v5/core/unknown.json':
++      yield { 'value': 0.0, 'comment': 'No schema specified' }
++    else:
++      result = sigcom_validator_client.fetch(signature)
++      if '$validator' in result:
++        yield { 'value': 1.0, 'comment': 'Instance validates against its own validator' }
++      else:
++        yield { 'value': 0.0, 'comment': 'Validation failed with result: {}'.format(result) }
+ 
+ #%%
+-@_register_metric({
+-  '@id': 136,
+-  'name': 'Program name',
+-  'description': 'Program name is available for querying',
+-  'principle': 'Findable',
+-})
+-def _(file, CFDE=None, **kwargs):
+-  # the program name is the root project
+-  #
+-  projects = CFDE.tables['project'].filter((
+-    CFDE.tables['project'].id_namespace == file['project_id_namespace']
+-  ) & (
+-    CFDE.tables['project'].local_id == file['project_local_id']
+-  ))
+-  project_entities = list(projects.entities())
+-  #
+-  while project_entities:
+-    project = one_and_only(project_entities)
+-    #
+-    p1, pip, p2 = CFDE.tables['project'].alias('p1'), CFDE.tables['project_in_project'].alias('pip'), CFDE.tables['project'].alias('p2')
+-    path = p1.path.filter(((p1.id_namespace == project['id_namespace']) & (p1.local_id == project['local_id'])))
+-    path = path.link(pip, on=((path.p1.id_namespace == pip.child_project_id_namespace) & (path.p1.local_id == pip.child_project_local_id)))
+-    path = path.link(p2, on=((path.pip.parent_project_id_namespace == p2.id_namespace) & (path.pip.parent_project_local_id == p2.local_id)))
+-    projects = path
+-    project_entities = list(projects.entities())
+-  # at this point 'project' contains the top level project
+-  if project['abbreviation'] in {'4DN', 'GTEx', 'HMP', 'KidsFirst', 'LINCS', 'Metabolomics', 'MoTrPAC'}:
+-    yield {
+-      'value': 1,
+-      'comment': 'Identified known program {}'.format(project['name'])
+-    }
+-  else:
+-    yield {
+-      'value': 0.75,
+-      'comment': 'Identified unknown top level project {}'.format(project['name'])
+-    }
++# Program name: LINCS
+ 
+ #%%
+-@_register_metric({
+-  '@id': 137,
+-  'name': 'Project name',
+-  'description': 'Project name is available for querying',
+-  'principle': 'Findable',
+-})
+-def _(file, CFDE=None, **kwargs):
+-  # the project name is the direct parent project
+-  if 'project' not in file:
+-    yield {
+-      'value': 0,
+-      'comment': 'No project found'
+-    }
+-  else:
+-    project = one_and_only(
+-      CFDE.tables['project'].filter((
+-        CFDE.tables['project'].id_namespace == file['project_id_namespace']
+-      ) & (
+-        CFDE.tables['project'].local_id == file['project_local_id']
+-      )).entities()
+-    )
+-    if 'name' in project:
+-      yield {
+-        'value': 1,
+-        'comment': 'Identified project: {}'.format(project['name'])
+-      }
+-    else:
+-      yield {
+-        'value': 0.5,
+-        'comment': 'Project identified, but it had no name'
+-      }
++# Project name: LINCS
+ 
+ #%%
+-@_register_metric({
+-  '@id': 27,
+-  'name': 'PI Contact',
+-  'description': 'PI Contact is available for dataset',
+-  'principle': 'Reusable',
+-})
+-def _(file, CFDE=None, **kwargs):
+-  try:
+-    contact = one_and_only(
+-      CFDE.tables['primary_dcc_contact'].filter(
+-        CFDE.tables['primary_dcc_contact'].project_id_namespace == file['id_namespace']
+-      ).entities()
+-    )
+-    if contact.get('contact_email'):
+-      yield {
+-        'value': 0.75,
+-        'comment': 'Contact email found, possibly PI'
+-      }
+-    elif contact.get('dcc_url'):
+-      yield {
+-        'value': 0.5,
+-        'comment': 'DCC website available, contact information might be discoverable'
+-      }
+-    else:
+-      yield {
+-        'value': 0,
+-        'comment': 'No contact information was located for this file'
+-      }
+-  except:
+-    yield {
+-      'value': 0,
+-      'comment': 'No contact information was located for this file'
+-    }
++# PI Contact: Avi
+ 
+ #%%
+ @_register_metric({
+@@ -238,11 +64,11 @@
+   'description': 'The institution that created this dataset is available',
+   'principle': 'Findable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  yield {
+-    'value': 0,
+-    'comment': 'No information about the contributing institution is available in the C2M2 Level 1'
+-  }
++def _(signature, **kwargs):
++  if signature['library']['meta'].get('center'):
++    yield { 'value': 1, 'comment': 'Center name is present in metadata' }
++  else:
++    yield { 'value': 0, 'comment': 'Center name is not present in metadata' }
+ 
+ #%%
+ @_register_metric({
+@@ -252,11 +78,43 @@
+   'description': 'The protocol for accessing the data is available and described with a URI',
+   'principle': 'Accessible',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  yield {
+-    'value': 0,
+-    'comment': 'The C2M2 Level 1 does not provide a means of capturing information about file access'
+-  }
++def _(signature, **kwargs):
++  # NOTE: this is convoluted, we will consider best coverage as 0.75
++  #       because of the inconsistent access paradigm.
++  import itertools as it
++  candidates = it.chain(
++    (
++      ('#/meta/persistent_id', signature['meta'].get('persistent_id'),),
++      ('#/meta/file_url', signature['meta'].get('file_url')),
++    ),
++    (
++      (f'#/library/meta/{k}', v['file_url'])
++      for k, v in signature['library']['meta'].items()
++      if type(v) == dict and 'file_url' in v
++    ),
++  )
++  is_any = False
++  for ptr, candidate in candidates:
++    if candidate is None: continue
++    is_any = True
++    access_scheme = urllib.parse.urlparse(candidate).scheme
++    if access_scheme:
++      yield {
++        'value': 0.75,
++        'comment': 'Access protocol ({}) is encoded in uri'.format(access_scheme),
++        'url_comment': ptr,
++      }
++    else:
++      yield {
++        'value': 0.5,
++        'comment': 'Link found but could not identify uri format',
++        'url_comment': ptr,
++      }
++  if not is_any:
++    yield {
++      'value': 0.0,
++      'comment': 'A way to access the data was not identified'
++    }
+ 
+ #%%
+ OBI = OBOOntology.parse(
+@@ -271,9 +129,16 @@
+   'description': 'Assay is present and a proper CFDE-specified ontological term is found in the CFDE-specified ontologies.',
+   'principle': 'Interoperable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  # TODO: check names
+-  assay = file.get('assay_type')
++def _(signature, **kwargs):
++  # NOTE: this is convoluted, we will consider best coverage as 0.75
++  #       because of the inconsistent access paradigm.
++  assay = signature['library']['meta'].get(
++    'assay_type',
++    signature['library']['meta'].get(
++      'assay_name',
++      signature['library']['meta'].get('assay')
++    )
++  )
+   if not assay:
+     yield {
+       'value': 0.0,
+@@ -281,19 +146,27 @@
+     }
+   elif OBI.get(assay) is not None:
+     yield {
+-      'value': 1,
++      'value': 0.75,
+       'comment': 'Ontological IRI for Assay found in OBI.',
+       'url_comment': assay,
+     }
+   else:
+-    yield {
+-      'value': 0.5,
+-      'comment': 'Assay found but not verified in OBI.',
+-      'url_comment': assay,
+-    }
++    assay_id = OBI.reversed_synonyms().get(assay)
++    if assay_id:
++      yield {
++        'value': 0.5,
++        'comment': 'Ontological IRI not found, but assay found in OBI ({}).'.format(assay_id),
++        'url_comment': assay,
++      }
++    else:
++      yield {
++        'value': 0.25,
++        'comment': 'Assay found but not verified in OBI.',
++        'url_comment': assay,
++      }
+ 
+ #%%
+-UBERON = OBOOntology.parse(fetch_cache('http://purl.obolibrary.org/obo/uberon.obo', 'uberon.owl'))
++UBERON = OBOOntology.parse(fetch_cache('http://purl.obolibrary.org/obo/uberon.obo', 'uberon.obo'))
+ 
+ @_register_metric({
+   '@id': 140,
+@@ -301,47 +174,44 @@
+   'description': 'An anatomical part is present and the CFDE-specified ontological term is found in the CFDE-specified ontologies',
+   'principle': 'Interoperable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  # TODO: check names
+-  biosamples = list(CFDE.tables['file_describes_biosample'].filter((
+-    CFDE.tables['file_describes_biosample'].file_id_namespace == file['id_namespace']
+-  ) & (
+-    CFDE.tables['file_describes_biosample'].file_local_id == file['local_id']
+-  )).link(
+-    CFDE.tables['biosample'], on=((
+-      CFDE.tables['file_describes_biosample'].biosample_id_namespace == CFDE.tables['biosample'].id_namespace
+-    ) & (
+-      CFDE.tables['file_describes_biosample'].biosample_local_id == CFDE.tables['biosample'].local_id
+-    ))
+-  ).entities())
+-  if len(biosamples) < 1:
++def _(signature, **kwargs):
++  anatomy = signature['meta'].get(
++    'anatomy',
++  )
++  if not anatomy:
++    if signature['meta'].get('cellline', signature['meta'].get('cell_line')):
++      yield {
++        'value': 0.25,
++        'comment': 'No anatomy found, but cell line is present thus it should be resolvable',
++      }
++    else:
++      yield {
++        'value': 0.0,
++        'comment': 'No anatomy found associated with the file',
++      }
++  elif UBERON.get(str(anatomy)) is not None:
+     yield {
+-      'value': 0.0,
+-      'comment': 'No biosamples found described by the file',
++      'value': 1.0,
++      'comment': 'Ontological IRI for anatomy found in UBERON.',
++      'url_comment': anatomy,
+     }
+   else:
+-    for biosample in biosamples:
+-      anatomy = biosample.get('anatomy')
+-      if not anatomy:
+-        yield {
+-          'value': 0.0,
+-          'comment': 'No anatomy found on the biosample',
+-        }
+-      elif UBERON.get(anatomy) is not None:
+-        yield {
+-          'value': 1,
+-          'comment': 'Ontological IRI for Anatomy found in UBERON.',
+-          'url_comment': anatomy,
+-        }
+-      else:
+-        yield {
+-          'value': 0.5,
+-          'comment': 'Anatomy found but not verified in UBERON.',
+-          'url_comment': anatomy,
+-        }
++    anatomy_id = UBERON.reversed_synonyms().get(str(anatomy))
++    if anatomy_id:
++      yield {
++        'value': 0.75,
++        'comment': 'Ontological IRI not found, but anatomy found in UBERON ({}).'.format(anatomy_id),
++        'url_comment': anatomy,
++      }
++    else:
++      yield {
++        'value': 0.5,
++        'comment': 'Anatomy found but not verified in UBERON.',
++        'url_comment': anatomy,
++      }
+ 
+ #%%
+-# MONDO = OBOOntology.parse(fetch_cache('http://purl.obolibrary.org/obo/mondo.obo', 'mondo.obo'))
++MONDO = OBOOntology.parse(fetch_cache('http://purl.obolibrary.org/obo/mondo.obo', 'mondo.obo'))
+ 
+ @_register_metric({
+   '@id': 141,
+@@ -349,11 +219,17 @@
+   'description': 'A disease is present and the CFDE-specified ontological term is found in the CFDE-specified ontologies',
+   'principle': 'Interoperable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  yield {
+-    'value': 0,
+-    'comment': 'No information about the disease is available in the C2M2 Level 1'
+-  }
++def _(signature, **kwargs):
++  if signature['meta'].get('cellline', signature['meta'].get('cell_line')):
++    yield {
++      'value': 0.25,
++      'comment': 'No disease found, but cell line is present thus it might be resolvable',
++    }
++  else:
++    yield {
++      'value': 0.0,
++      'comment': 'No disease found associated with the file',
++    }
+ 
+ #%%
+ EDAM = OBOOntology.parse(fetch_cache('http://edamontology.org/EDAM.obo', 'EDAM.obo'))
+@@ -364,25 +240,32 @@
+   'description': 'A file type is present and the CFDE-specified ontological term is found in the CFDE-specified ontologies',
+   'principle': 'Interoperable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  # TODO: check names
+-  for term_type, term in [('file format', file.get('file_format')), ('data type', file.get('data_type'))]:
+-    if not term:
+-      yield {
+-        'value': 0.0,
+-        'comment': 'No {} found on the biosample'.format(term_type),
+-      }
+-    elif EDAM.get("EDAM_{term}".format(term=term)) is not None:
++def _(signature, **kwargs):
++  file_format = signature['library']['meta'].get('file_format')
++  if not file_format:
++    yield {
++      'value': 0.0,
++      'comment': 'No standardized file format found associated with the file',
++    }
++  elif EDAM.get(str(file_format)) is not None:
++    yield {
++      'value': 0.75,
++      'comment': 'Ontological IRI for file format found in EDAM.',
++      'url_comment': str(file_format),
++    }
++  else:
++    file_format_id = EDAM.reversed_synonyms().get(str(file_format))
++    if file_format_id:
+       yield {
+-        'value': 1,
+-        'comment': 'Ontological IRI for {} found in EDAM.'.format(term_type),
+-        'url_comment': term,
++        'value': 0.5,
++        'comment': 'Ontological IRI not found, but file format found in EDAM ({}).'.format(file_format_id),
++        'url_comment': str(file_format),
+       }
+     else:
+       yield {
+-        'value': 0.5,
+-        'comment': '{} found but not verified in EDAM.'.format(term_type.capitalize()),
+-        'url_comment': term,
++        'value': 0.25,
++        'comment': 'File format found but not verified in EDAM.',
++        'url_comment': str(file_format),
+       }
+ 
+ #%%
+@@ -394,56 +277,27 @@
+   'description': 'A taxonomy is present and the CFDE-specified ontological term is found in the CFDE-specified ontologies',
+   'principle': 'Interoperable',
+ })
+-def _(file, CFDE=None, ncbi_taxon_client=None, **kwargs):
+-  # TODO: check names
+-  path = CFDE.tables['file'].filter((CFDE.tables['file'].id_namespace == file['id_namespace']) & (CFDE.tables['file'].local_id == file['local_id']))
+-  path = path.link(
+-    CFDE.tables['file_describes_subject'], on=((
+-      CFDE.tables['file'].id_namespace == CFDE.tables['file_describes_subject'].file_id_namespace
+-    ) & (
+-      CFDE.tables['file'].local_id == CFDE.tables['file_describes_subject'].file_local_id
+-    ))
+-  )
+-  path = path.link(
+-    CFDE.tables['subject'], on=((
+-      CFDE.tables['file_describes_subject'].subject_id_namespace == CFDE.tables['subject'].id_namespace
+-    ) & (
+-      CFDE.tables['file_describes_subject'].subject_local_id == CFDE.tables['subject'].local_id
+-    ))
+-  )
+-  path = path.link(
+-    CFDE.tables['subject_role_taxonomy'], on=((
+-      CFDE.tables['subject'].id_namespace == CFDE.tables['subject_role_taxonomy'].subject_id_namespace
+-    ) & (
+-      CFDE.tables['subject'].local_id == CFDE.tables['subject_role_taxonomy'].subject_local_id
+-    ))
+-  )
+-  for entity in path.entities():
+-    if entity.get('taxonomy_id') is None:
++def _(signature, ncbi_taxon_client=None, **kwargs):
++  taxon = signature['library']['meta'].get('taxonomy_id')
++  if taxon:
++    taxon_resolved = ncbi_taxon_client.fetch(str(taxon))
++    if taxon_resolved is not None:
+       yield {
+-        'value': 0,
+-        'comment': 'Taxonomy is not present in subject_role_taxonomy',
++        'value': 1,
++        'comment': 'Taxonomy is present and validated in ncbi',
++        'url_comment': str(taxon),
+       }
+-    elif entity['taxonomy_id'].startswith('NCBI:txid'):
+-      taxon = ncbi_taxon_client.fetch(entity['taxonomy_id'][len('NCBI:txid'):])
+-      if taxon is not None:
+-        yield {
+-          'value': 1,
+-          'comment': 'Taxonomy is present and validated in ncbi',
+-          'url_comment': entity['taxonomy_id'],
+-        }
+-      else:
+-        yield {
+-          'value': 0.5,
+-          'comment': 'Taxonomy is present but not NCBI',
+-          'url_comment': entity['taxonomy_id'],
+-        }
+     else:
+       yield {
+         'value': 0.5,
+         'comment': 'Taxonomy is present but not NCBI',
+-        'url_comment': entity['taxonomy_id'],
++        'url_comment': str(taxon),
+       }
++  else:
++    yield {
++      'value': 0.0,
++      'comment': 'Taxonomy is not present',
++    }
+ 
+ #%%
+ Cellosaurus = CellosaurusOntology.parse(fetch_cache('ftp://ftp.expasy.org/databases/cellosaurus/cellosaurus.xml', 'cellosaurus.xml'))
+@@ -454,56 +308,34 @@
+   'description': 'A cell line is present and the CFDE-specified ontological term is found in the CFDE-specified ontologies',
+   'principle': 'Interoperable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  path = CFDE.tables['file'].filter((CFDE.tables['file'].id_namespace == file['id_namespace']) & (CFDE.tables['file'].local_id == file['local_id']))
+-  path = path.link(
+-    CFDE.tables['file_describes_subject'], on=((
+-      CFDE.tables['file'].id_namespace == CFDE.tables['file_describes_subject'].file_id_namespace
+-    ) & (
+-      CFDE.tables['file'].local_id == CFDE.tables['file_describes_subject'].file_local_id
+-    ))
+-  )
+-  path = path.link(
+-    CFDE.tables['subject'], on=((
+-      CFDE.tables['file_describes_subject'].subject_id_namespace == CFDE.tables['subject'].id_namespace
+-    ) & (
+-      CFDE.tables['file_describes_subject'].subject_local_id == CFDE.tables['subject'].local_id
+-    ))
+-  )
+-  # https://github.com/nih-cfde/specifications-and-documentation/blob/master/draft-C2M2_internal_CFDE_CV_tables/subject_granularity.tsv#L2
+-  path = path.filter(CFDE.tables['subject'].granularity == 'cfde_subject_granularity:4')
+-  path = path.subject
+-  cell_lines = path.entities() # contain all cell line subjects
+-  for cell_line in cell_lines:
+-    cellosaurus_cell_line = Cellosaurus.get(cell_line['persistent_id']) if 'persistent_id' in cell_line else None
+-    if cellosaurus_cell_line and cell_line.get('name') == cellosaurus_cell_line.get('name') and cell_line.get('name') is not None:
+-      yield {
+-        'value': 1,
+-        'comment': 'Ontological IRI for cell line and term match what is found in Cellosaurus.',
+-        'url_comment': cell_line['persistent_id']
+-      }
+-    elif cellosaurus_cell_line is not None:
+-      yield {
+-        'value': 0.75,
+-        'comment': 'Ontological IRI for cell line was found in Cellosaurus.',
+-        'url_comment': cell_line['persistent_id']
+-      }
+-    elif 'name' in cell_line and Cellosaurus.get(cell_line['name']):
+-      yield {
+-        'value': 0.75,
+-        'comment': 'Ontological IRI found in Cellosaurus was in the cell_line name field.',
+-        'url_comment': cell_line['name'],
+-      }
+-    elif 'name' in cell_line:
++def _(signature, **kwargs):
++  # NOTE: this is convoluted, we will consider best coverage as 0.75
++  #       because of the inconsistent access paradigm.
++  cell_line = signature['meta'].get('cellline', signature['meta'].get('cell_line'))
++  if not cell_line:
++    yield {
++      'value': 0.0,
++      'comment': 'No cell_line found associated with the signature',
++    }
++  elif Cellosaurus.get(str(cell_line)) is not None:
++    yield {
++      'value': 0.75,
++      'comment': 'Ontological IRI for cell_line found in Cellosaurus.',
++      'url_comment': str(cell_line),
++    }
++  else:
++    cell_line_id = Cellosaurus.reversed_synonyms().get(str(cell_line))
++    if cell_line_id:
+       yield {
+         'value': 0.5,
+-        'comment': 'Cell line found but not in Cellosaurus',
+-        'url_comment': cell_line.get('name', ''),
++        'comment': 'Ontological IRI not found, but cell line found in Cellosaurus ({}).'.format(cell_line_id),
++        'url_comment': str(cell_line),
+       }
+     else:
+       yield {
+-        'value': 0,
+-        'comment': 'Cell line found but missing any information',
++        'value': 0.25,
++        'comment': 'Cell line found but not verified in Cellosaurus.',
++        'url_comment': str(cell_line),
+       }
+ 
+ #%%
+@@ -514,10 +346,10 @@
+   'description': 'A Data usage license is described',
+   'principle': 'Reusable',
+ })
+-def _(file, CFDE=None, **kwargs):
++def _(signature, **kwargs):
+   yield {
+     'value': 0,
+-    'comment': 'No information about data usage licenses are described in the C2M2 Level 1'
++    'comment': 'No information about data usage licenses are described'
+   }
+ 
+ #%%
+@@ -528,26 +360,11 @@
+   'description': 'Globally unique, persistent, and valid identifiers (preferrably DOIs) are present for the dataset',
+   'principle': 'Findable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  persistent_id = file.get('persistent_id')
+-  if persistent_id:
+-    if re.match(r'^https?://[^/]+\.doi\.org/.+$', persistent_id):
+-      yield {
+-        'value': 1,
+-        'comment': 'A DOI was identified in the persistent_id',
+-        'url_comment': persistent_id,
+-      }
+-    else:
+-      yield {
+-        'value': 0.5,
+-        'comment': 'A persistent_id was identified but it is not a doi',
+-        'url_comment': persistent_id,
+-      }
+-  else:
+-    yield {
+-      'value': 0,
+-      'comment': 'No persistent_id defined'
+-    }
++def _(signature, **kwargs):
++  yield {
++    'value': 0,
++    'comment': 'No persistent_id defined'
++  }
+ 
+ #%%
+ @_register_metric({
+@@ -557,18 +374,13 @@
+   'description': 'An identifier for the resource is present',
+   'principle': 'Findable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  if file.keys() >= {'local_id', 'id_namespace'}:
+-    yield {
+-      'value': 1,
+-      'comment': 'An id and namespace were provided for the resource',
+-      'url_comment': '{} {}'.format(file['local_id'], file['id_namespace']),
+-    }
+-  else:
+-    yield {
+-      'value': 0,
+-      'comment': 'An id and namespace were not present for the resource',
+-    }
++def _(signature, **kwargs):
++  # This is guaranteed by sigcom
++  yield {
++    'value': 1,
++    'comment': 'A resource id is present',
++    'url_comment': signature['id'],
++  }
+ 
+ #%%
+ @_register_metric({
+@@ -577,40 +389,98 @@
+   'description': 'A landing page exists and is accessible for the identifiers',
+   'principle': 'Findable',
+ })
+-def _(file, CFDE=None, **kwargs):
+-  persistent_id = file.get('persistent_id')
+-  if persistent_id:
+-    if not re.match(r'^https?://', persistent_id):
+-      persistent_id = 'https://identifiers.org/{}'.format(persistent_id)
+-    #
+-    try:
+-      status_code = requests.head(persistent_id, headers={'User-Agent': None}).status_code
+-      if status_code >= 200 and status_code < 300:
+-        yield {
+-          'value': 1,
+-          'comment': 'valid and HEAD reports {}'.format(status_code),
+-          'url_comment': persistent_id,
+-        }
+-      elif status_code >= 300 and status_code < 399:
++def _(signature, **kwargs):
++  landing_page = f"https://ldp3.cloud/#/Signatures/{signature['id']}"
++  meta_landing_page = f"https://ldp3.cloud/metadata-api/signatures/{signature['id']}"
++  try:
++    status_code = requests.get(meta_landing_page, headers={'User-Agent': None}).status_code
++    if status_code >= 200 and status_code < 300:
++      yield {
++        'value': 1,
++        'comment': 'valid and GET reports {}'.format(status_code),
++        'url_comment': landing_page,
++      }
++    elif status_code >= 300 and status_code < 399:
++      yield {
++        'value': 0.5,
++        'comment': 'valid url but GET reported {}, status cannot be determined'.format(status_code),
++        'url_comment': landing_page,
++      }
++    elif status_code >= 400:
++      yield {
++        'value': 0.25,
++        'comment': 'valid url but GET reported {}'.format(status_code),
++        'url_comment': landing_page,
++      }
++  except requests.exceptions.MissingSchema:
++    yield {
++      'value': 0.25,
++      'comment': 'does not seem to be a valid url'.format(landing_page),
++      'url_comment': landing_page,
++    }
++
++#%%
++NCBIGenes = NCBIGeneOntology()
++
++@_register_metric({
++  '@id': 311,
++  'name': 'Gene ID',
++  'description': 'An applicable gene id is present and the term is found in the NCBI',
++  'principle': 'Interoperable',
++})
++def _(signature, **kwargs):
++  # NOTE: this is convoluted, we will consider best coverage as 0.75
++  #       because of the inconsistent access paradigm.
++  targets = signature['meta'].get('clueIoGeneTargets', '')
++  targets = [] if targets.lower() in {'','na'} else [f"ncbigene:{gene}" for gene in targets.split('|')]
++  for ncbigene in targets:
++    if NCBIGenes.get(ncbigene) is not None:
++      yield {
++        'value': 0.75,
++        'comment': 'Ontological IRI for ncbigene found in NCBIGenes.',
++        'url_comment': ncbigene,
++      }
++    else:
++      cell_line_id = NCBIGenes.reversed_synonyms().get(ncbigene)
++      if cell_line_id:
+         yield {
+           'value': 0.5,
+-          'comment': 'valid url but HEAD reported {}, status cannot be determined'.format(status_code),
+-          'url_comment': persistent_id,
++          'comment': 'Ontological IRI not found, but cell line found in NCBIGenes ({}).'.format(cell_line_id),
++          'url_comment': ncbigene,
+         }
+-      elif status_code >= 400:
++      else:
+         yield {
+           'value': 0.25,
+-          'comment': 'valid url but HEAD reported {}'.format(status_code),
+-          'url_comment': persistent_id,
++          'comment': 'ncbigene found but not verified in NCBIGenes.',
++          'url_comment': ncbigene,
+         }
+-    except requests.exceptions.MissingSchema:
++
++#%%
++@_register_metric({
++  '@id': 310,
++  'name': 'Drug term',
++  'description': 'An applicable drug term is uniquely resolvable in pubchem',
++  'principle': 'Interoperable',
++})
++def _(signature, pubchem_client=None, **kwargs):
++  # NOTE: this is convoluted, we will consider best coverage as 0.75
++  #       because of the inconsistent access paradigm.
++  # TODO: can we just check the pubchemid if present??
++  # drug = signature['meta'].get('pubChemID',
++  #   signature['meta'].get('perturbagenID')
++  # )
++  drug = signature['meta'].get('treatment')
++  if drug:
++    drug_resolved = pubchem_client.fetch(drug)
++    if drug_resolved is not None:
+       yield {
+-        'value': 0.25,
+-        'comment': 'does not seem to be a valid url'.format(persistent_id),
+-        'url_comment': persistent_id,
++        'value': 1,
++        'comment': 'Drug term is present and validated in pubchem',
++        'url_comment': drug_resolved,
++      }
++    else:
++      yield {
++        'value': 0.5,
++        'comment': 'Drug term is present but not pubchem verifiable',
++        'url_comment': drug_resolved,
+       }
+-  else:
+-    yield {
+-      'value': 0,
+-      'comment': 'A persistent_id was not provided for the resource',
+-    }
