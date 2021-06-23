@@ -1,0 +1,8 @@
+pert	coefficient_matrix	rank_matrix
+siRNA	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/siRNA_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/siRNA_rank_mat.gctx
+aby	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/aby_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/aby_rank_mat.gctx
+lig	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/lig_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/lig_rank_mat.gctx
+xpr	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/xpr_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/xpr_rank_mat.gctx
+oe	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/oe_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/oe_rank_mat.gctx
+shRNA	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/shRNA_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/shRNA_rank_mat.gctx
+cp	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-coefficient/cp_coeff_mat.gctx	https://lincs-dcic.s3.amazonaws.com/LINCS-sigs-2021/gctx/cd-rank/cp_rank_mat.gctx
