@@ -1,8 +1,8 @@
 # LINCS FAIR Assessment Summary
-We investigate the assessment results using the [C2M2 assessment](./figures/https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2)
-on the LINCS metadata C2M2 serializations and a custom [FAIR Assessment](./figures/https://github.com/nih-cfde/LINCS-metadata/tree/main/FAIRAssessment/c2m2) directly on the LINCS LDP3 metadata.
+We investigate the assessment results using the [C2M2 assessment](https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2)
+on the LINCS metadata C2M2 serializations and a custom [FAIR Assessment](https://github.com/nih-cfde/LINCS-metadata/tree/main/FAIRAssessment/assessment) directly on the LINCS LDP3 metadata.
 
-## Step 1. Perform FAIR Assessement on LINCS C2M2 Datapackage using [C2M2 assessment](./figures/https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2).
+## Step 1. Perform FAIR Assessement on LINCS C2M2 Datapackage using [C2M2 assessment](https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2).
 ```bash
 # Get LINCS-metadata
 git clone https://github.com/nih-cfde/LINCS-metadata.git
@@ -625,7 +625,7 @@ pd.concat([
 
 
 
-## Step 2. Perform FAIR Assessement on LINCS LDP3 Data using [C2M2 assessment](./figures/https://github.com/nih-cfde/LINCS-metadata/tree/master/FAIRAssessment).
+## Step 2. Perform FAIR Assessement on LINCS LDP3 Data using [C2M2 assessment](https://github.com/nih-cfde/LINCS-metadata/tree/main/FAIRAssessment).
 ```bash
 # Get LINCS-metadata
 git clone https://github.com/nih-cfde/LINCS-metadata.git
