@@ -625,7 +625,7 @@ pd.concat([
 
 
 
-## Step 2. Perform FAIR Assessement on LINCS LDP3 Data using [C2M2 assessment](https://github.com/nih-cfde/LINCS-metadata/tree/main/FAIRAssessment).
+## Step 2. Perform FAIR Assessement on LINCS LDP3 Data using [LINCS assessment](https://github.com/nih-cfde/LINCS-metadata/tree/main/FAIRAssessment/assessment).
 ```bash
 # Get LINCS-metadata
 git clone https://github.com/nih-cfde/LINCS-metadata.git
