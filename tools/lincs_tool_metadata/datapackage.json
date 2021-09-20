@@ -87,42 +87,42 @@
                     {
                         "name": "Citations",
                         "description": "number of citations as indicated on pubmed",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Readers_Count",
                         "description": "number of readers as reported on altmetric",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Altmetric_Score",
                         "description": "score of the article on altmetric",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Facebook_Shares",
                         "description": "number of times tool shared on facebook",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Readers_in_Mendeley",
                         "description": "number of readers on Mendele as reported on altmetric",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Mentions_in_social_media",
                         "description": "based on altmetric data",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Twitter_accounts_that_tweeted_this_publication",
                         "description": "based on altmetric data",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Scientists_who_mentioned_the_publication_on_Twitter",
                         "description": "based on altmetric data",
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "Institution",
