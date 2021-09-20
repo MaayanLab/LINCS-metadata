@@ -9,4 +9,4 @@ Please install git-lfs for your system using the instructions on <https://docs.g
 
 ## Older Releases
 
-Looking for the older versions of this assessment? All main versions of this repo are accessed through the (Github Releases)[https://github.com/nih-cfde/LINCS-metadata/releases].
+Looking for the older versions of this assessment? All main versions of this repo are accessed through the [Github Releases](https://github.com/nih-cfde/LINCS-metadata/releases).
