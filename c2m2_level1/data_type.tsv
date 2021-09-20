@@ -1,8 +1,7 @@
 id	name	description	synonyms
-data:0928	Gene expression profile	Data quantifying the level of expression of (typically) multiple genes, derived for example from microarray experiments.	
-data:1566	Protein-ligand interaction report		
-data:2968	Image		
-data:2603	Expression data		
-data:3112	Gene expression matrix		
-data:3002	Annotation track		
-data:2536	Mass spectrometry data		
+data:0928	Gene expression profile	Data quantifying the level of expression of (typically) multiple genes, derived for example from microarray experiments.	["Gene expression pattern"]
+data:1566	Protein-ligand interaction report	An informative report on protein-ligand (small molecule) interaction(s).	["Protein-drug interaction report"]
+data:2536	Mass spectrometry data	Data concerning a mass spectrometry measurement.	[]
+data:2603	Expression data	Image, hybridisation or some other data arising from a study of feature/molecule expression, typically profiling or quantification.	["Non-coding RNA quantification data","Transcriptome profile","Gene product quantification data","mRNA quantification data","Non-coding RNA profile","mRNA profile","Transcriptome quantification data","Metabolite expression data","RNA quantification data","Microarray data","RNA-seq data","Gene expression data","Gene product profile","Gene transcription quantification data","Protein expression data","Gene transcription profile","RNA profile","Proteome profile","Protein profile","Protein quantification data","Proteome quantification data"]
+data:2968	Image	Data (typically biological or biomedical) that has been rendered into an image, typically for display on screen.	["Image data"]
+data:3002	Annotation track	Annotation of one particular positional feature on a biomolecular (typically genome) sequence, suitable for import and display in a genome browser.	["Genome-browser track","Genome annotation track","Genomic track","Genome track","Sequence annotation track"]

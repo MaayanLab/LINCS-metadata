@@ -8,7 +8,14 @@
          "name": "file",
          "title": "file",
          "path": "file.tsv",
-         "description": "A digital asset",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "A stable digital asset",
          "schema": {
             "fields": [
                {
@@ -45,7 +52,7 @@
                },
                {
                   "name": "persistent_id",
-                  "description": "A persistent, resolvable (not necessarily retrievable) URI permanently attached to this file",
+                  "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this file",
                   "type": "string"
                },
                {
@@ -87,26 +94,17 @@
                {
                   "name": "file_format",
                   "description": "An EDAM CV term ID identifying the digital format of this file (e.g. TSV or FASTQ)",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^format:[0-9]+$"
-                  }
+                  "type": "string"
                },
                {
                   "name": "data_type",
                   "description": "An EDAM CV term ID identifying the type of information stored in this file (e.g. RNA sequence reads)",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^data:[0-9]+$"
-                  }
+                  "type": "string"
                },
                {
                   "name": "assay_type",
                   "description": "An OBI CV term ID describing the type of experiment that generated the results summarized by this file",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^OBI:[0-9]+$"
-                  }
+                  "type": "string"
                },
                {
                   "name": "mime_type",
@@ -117,6 +115,13 @@
             "missingValues": [ "" ],
             "primaryKey": [ "id_namespace", "local_id" ],
             "foreignKeys": [
+               {
+                  "fields": "id_namespace",
+                  "reference": {
+                     "resource": "id_namespace",
+                     "fields": "id"
+                  }
+               },
                {
                   "fields": [ "project_id_namespace", "project_local_id" ],
                   "reference": {
@@ -153,6 +158,13 @@
          "name": "biosample",
          "title": "biosample",
          "path": "biosample.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "A tissue sample or other physical specimen",
          "schema": {
             "fields": [
@@ -190,7 +202,7 @@
                },
                {
                   "name": "persistent_id",
-                  "description": "A persistent, resolvable (not necessarily retrievable) URI permanently attached to this biosample",
+                  "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this biosample",
                   "type": "string"
                },
                {
@@ -200,22 +212,38 @@
                   "format": "any"
                },
                {
+                  "name": "assay_type",
+                  "description": "An OBI CV term ID describing the type of experiment that generated this biosample",
+                  "type": "string"
+               },
+               {
                   "name": "anatomy",
                   "description": "An UBERON CV term ID used to locate the origin of this biosample within the physiology of its source or host organism",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^UBERON:[0-9]+$"
-                  }
+                  "type": "string"
                }
             ],
             "missingValues": [ "" ],
             "primaryKey": [ "id_namespace", "local_id" ],
             "foreignKeys": [
                {
+                  "fields": "id_namespace",
+                  "reference": {
+                     "resource": "id_namespace",
+                     "fields": "id"
+                  }
+               },
+               {
                   "fields": [ "project_id_namespace", "project_local_id" ],
                   "reference": {
                      "resource": "project",
                      "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": "assay_type",
+                  "reference": {
+                     "resource": "assay_type",
+                     "fields": "id"
                   }
                },
                {
@@ -233,6 +261,13 @@
          "name": "subject",
          "title": "subject",
          "path": "subject.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "A biological entity from which a C2M2 biosample can be generated",
          "schema": {
             "fields": [
@@ -270,7 +305,7 @@
                },
                {
                   "name": "persistent_id",
-                  "description": "A persistent, resolvable (not necessarily retrievable) URI permanently attached to this subject",
+                  "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this subject",
                   "type": "string"
                },
                {
@@ -300,6 +335,13 @@
             "primaryKey": [ "id_namespace", "local_id" ],
             "foreignKeys": [
                {
+                  "fields": "id_namespace",
+                  "reference": {
+                     "resource": "id_namespace",
+                     "fields": "id"
+                  }
+               },
+               {
                   "fields": [ "project_id_namespace", "project_local_id" ],
                   "reference": {
                      "resource": "project",
@@ -314,7 +356,14 @@
          "name": "primary_dcc_contact",
          "title": "primary_dcc_contact",
          "path": "primary_dcc_contact.tsv",
-         "description": "One primary contact person for the Common Fund data coordinating center (DCC) that produced the top-level C2M2 metadataset identified by the given project foreign key",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "One primary contact person for the Common Fund data coordinating center (DCC, identified by the given project foreign key) that produced this C2M2 instance",
          "schema": {
             "fields": [
                {
@@ -336,7 +385,7 @@
                },
                {
                   "name": "project_id_namespace",
-                  "description": "The id_namespace of the project record representing the top-level C2M2 metadataset produced by this contact's DCC [part 1 of 2-component composite foreign key]",
+                  "description": "The id_namespace of the project record representing this contact's DCC [part 1 of 2-component composite foreign key]",
                   "type": "string",
                   "constraints": {
                      "required": true
@@ -344,7 +393,7 @@
                },
                {
                   "name": "project_local_id",
-                  "description": "The local_id of the project record representing the top-level C2M2 metadataset produced by this contact's DCC [part 2 of 2-component composite foreign key]",
+                  "description": "The local_id of the project record representing this contact's DCC [part 2 of 2-component composite foreign key]",
                   "type": "string",
                   "constraints": {
                      "required": true
@@ -355,6 +404,7 @@
                   "description": "A very short display label for this contact's DCC",
                   "type": "string",
                   "constraints": {
+                     "required": true,
                      "pattern": "^[a-zA-Z0-9_]+$"
                   }
                },
@@ -398,6 +448,13 @@
          "name": "project",
          "title": "project",
          "path": "project.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "A node in the C2M2 project hierarchy subdividing all resources described by this DCC's C2M2 metadata",
          "schema": {
             "fields": [
@@ -419,7 +476,7 @@
                },
                {
                   "name": "persistent_id",
-                  "description": "A persistent, resolvable (not necessarily retrievable) URI permanently attached to this project",
+                  "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this project",
                   "type": "string"
                },
                {
@@ -439,7 +496,11 @@
                {
                   "name": "name",
                   "description": "A short, human-readable, machine-read-friendly label for this project",
-                  "type": "string"
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }                  
                },
                {
                   "name": "description",
@@ -448,7 +509,16 @@
                }
             ],
             "missingValues": [ "" ],
-            "primaryKey": [ "id_namespace", "local_id" ]
+            "primaryKey": [ "id_namespace", "local_id" ],
+            "foreignKeys": [
+               {
+                  "fields": "id_namespace",
+                  "reference": {
+                     "resource": "id_namespace",
+                     "fields": "id"
+                  }
+               }
+            ]
          }
       },
       {
@@ -456,6 +526,13 @@
          "name": "project_in_project",
          "title": "project_in_project",
          "path": "project_in_project.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a child project and its parent",
          "schema": {
             "fields": [
@@ -521,6 +598,13 @@
          "name": "collection",
          "title": "collection",
          "path": "collection.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "A grouping of C2M2 files, biosamples and/or subjects",
          "schema": {
             "fields": [
@@ -542,7 +626,7 @@
                },
                {
                   "name": "persistent_id",
-                  "description": "A persistent, resolvable (not necessarily retrievable) URI permanently attached to this collection",
+                  "description": "A persistent, resolvable (not necessarily retrievable) URI or compact ID permanently attached to this collection",
                   "type": "string"
                },
                {
@@ -571,7 +655,16 @@
                }
             ],
             "missingValues": [ "" ],
-            "primaryKey": [ "id_namespace", "local_id" ]
+            "primaryKey": [ "id_namespace", "local_id" ],
+            "foreignKeys": [
+               {
+                  "fields": "id_namespace",
+                  "reference": {
+                     "resource": "id_namespace",
+                     "fields": "id"
+                  }
+               }
+            ]
          }
       },
       {
@@ -579,6 +672,13 @@
          "name": "collection_in_collection",
          "title": "collection_in_collection",
          "path": "collection_in_collection.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a containing collection (superset) and a contained collection (subset)",
          "schema": {
             "fields": [
@@ -641,9 +741,88 @@
       },
       {
          "profile": "tabular-data-resource",
+         "name": "file_describes_collection",
+         "title": "file_describes_collection",
+         "path": "file_describes_collection.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Association between a summary file and an entire collection described by that file",
+         "schema": {
+            "fields": [
+               {
+                  "name": "file_id_namespace",
+                  "description": "Identifier namespace for this file",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "file_local_id",
+                  "description": "The ID of this file",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "collection_id_namespace",
+                  "description": "Identifier namespace for this collection",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "collection_local_id",
+                  "description": "The ID of this collection",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "primaryKey": [
+               "file_id_namespace",
+               "file_local_id",
+               "collection_id_namespace",
+               "collection_local_id"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "file_id_namespace", "file_local_id" ],
+                  "reference": {
+                     "resource": "file",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": [ "collection_id_namespace", "collection_local_id" ],
+                  "reference": {
+                     "resource": "collection",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
          "name": "collection_defined_by_project",
          "title": "collection_defined_by_project",
          "path": "collection_defined_by_project.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "(Shallow) association between a collection and a project that defined it",
          "schema": {
             "fields": [
@@ -709,6 +888,13 @@
          "name": "file_in_collection",
          "title": "file_in_collection",
          "path": "file_in_collection.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a file and a (containing) collection",
          "schema": {
             "fields": [
@@ -774,6 +960,13 @@
          "name": "biosample_in_collection",
          "title": "biosample_in_collection",
          "path": "biosample_in_collection.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a biosample and a (containing) collection",
          "schema": {
             "fields": [
@@ -839,6 +1032,13 @@
          "name": "subject_in_collection",
          "title": "subject_in_collection",
          "path": "subject_in_collection.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a subject and a (containing) collection",
          "schema": {
             "fields": [
@@ -904,6 +1104,13 @@
          "name": "file_describes_biosample",
          "title": "file_describes_biosample",
          "path": "file_describes_biosample.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a biosample and a file containing information about that biosample",
          "schema": {
             "fields": [
@@ -969,6 +1176,13 @@
          "name": "file_describes_subject",
          "title": "file_describes_subject",
          "path": "file_describes_subject.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a subject and a file containing information about that subject",
          "schema": {
             "fields": [
@@ -1034,6 +1248,13 @@
          "name": "biosample_from_subject",
          "title": "biosample_from_subject",
          "path": "biosample_from_subject.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Association between a biosample and its source subject",
          "schema": {
             "fields": [
@@ -1096,9 +1317,142 @@
       },
       {
          "profile": "tabular-data-resource",
+         "name": "biosample_disease",
+         "title": "biosample_disease",
+         "path": "biosample_disease.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Association between a C2M2 biosample and a disease known to be associated with that biosample",
+         "schema": {
+            "fields": [
+               {
+                  "name": "biosample_id_namespace",
+                  "description": "Identifier namespace for this biosample",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "biosample_local_id",
+                  "description": "The ID of this biosample",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "disease",
+                  "description": "A Disease Ontology CV term ID describing this disease",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "primaryKey": [
+               "biosample_id_namespace",
+               "biosample_local_id",
+               "disease"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "biosample_id_namespace", "biosample_local_id" ],
+                  "reference": {
+                     "resource": "biosample",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": "disease",
+                  "reference": {
+                     "resource": "disease",
+                     "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "subject_disease",
+         "title": "subject_disease",
+         "path": "subject_disease.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Association between a C2M2 subject and a disease positively identified in that subject",
+         "schema": {
+            "fields": [
+               {
+                  "name": "subject_id_namespace",
+                  "description": "Identifier namespace for this subject",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "subject_local_id",
+                  "description": "The ID of this subject",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "disease",
+                  "description": "A Disease Ontology CV term ID describing this disease",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "primaryKey": [
+               "subject_id_namespace",
+               "subject_local_id",
+               "disease"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "subject_id_namespace", "subject_local_id" ],
+                  "reference": {
+                     "resource": "subject",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": "disease",
+                  "reference": {
+                     "resource": "disease",
+                     "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
          "name": "subject_role_taxonomy",
          "title": "subject_role_taxonomy",
          "path": "subject_role_taxonomy.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "Trinary association linking IDs representing (1) a subject, (2) a subject_role (a named organism-level constituent component of a subject, like 'host', 'pathogen', 'endosymbiont', 'taxon detected inside a microbiome subject', etc.) and (3) a taxonomic label (which is hereby assigned to this particular subject_role within this particular subject)",
          "schema": {
             "fields": [
@@ -1173,7 +1527,14 @@
          "name": "assay_type",
          "title": "assay_type",
          "path": "assay_type.tsv",
-         "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate results stored in C2M2 files",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "List of Ontology for Biomedical Investigations (OBI) CV terms used to describe types of experiment that generate C2M2 biosamples or results stored in C2M2 files",
          "schema": {
             "fields": [
                {
@@ -1182,14 +1543,17 @@
                   "type": "string",
                   "constraints": {
                      "required": true,
-                     "unique": true,
-                     "pattern": "^OBI:[0-9]+$"
+                     "unique": true
                   }
                },
                {
                   "name": "name",
                   "description": "A short, human-readable, machine-read-friendly label for this OBI term",
-                  "type": "string"
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
                },
                {
                   "name": "description",
@@ -1198,11 +1562,8 @@
                },
                {
                   "name": "synonyms",
-                  "description": "Pipe-separated list of synonyms (alternate OBI terms) equivalent to this OBI term",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^(OBI:[0-9]+|)*OBI:[0-9]+$"
-                  }
+                  "description": "A list of synonyms for this term as identified by the OBI metadata",
+                  "type": "array"
                }
             ],
             "missingValues": [ "" ],
@@ -1214,6 +1575,13 @@
          "name": "ncbi_taxonomy",
          "title": "ncbi_taxonomy",
          "path": "ncbi_taxonomy.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "List of NCBI Taxonomy Database IDs identifying taxa used to describe C2M2 subjects",
          "schema": {
             "fields": [
@@ -1238,7 +1606,11 @@
                {
                   "name": "name",
                   "description": "A short, human-readable, machine-read-friendly label for this taxon",
-                  "type": "string"
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
                },
                {
                   "name": "description",
@@ -1247,11 +1619,8 @@
                },
                {
                   "name": "synonyms",
-                  "description": "Pipe-separated list of synonyms (alternate NCBI Taxonomy IDs) equivalent to this taxon",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^([0-9]+|)*[0-9]+$"
-                  }
+                  "description": "A list of synonyms for this taxon as identified by the NCBI Taxonomy DB",
+                  "type": "array"
                }
             ],
             "missingValues": [ "" ],
@@ -1263,36 +1632,43 @@
          "name": "anatomy",
          "title": "anatomy",
          "path": "anatomy.tsv",
-         "description": "List of Uber-anatomy ontology (Uberon) CV terms used to locate the origin of a C2M2 biosample within the physiology of its source or host organism",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "List of Uber-anatomy ontology (UBERON) CV terms used to locate the origin of a C2M2 biosample within the physiology of its source or host organism",
          "schema": {
             "fields": [
                {
                   "name": "id",
-                  "description": "An Uberon CV term",
+                  "description": "An UBERON CV term",
                   "type": "string",
                   "constraints": {
                      "required": true,
-                     "unique": true,
-                     "pattern": "^UBERON:[0-9]+$"
+                     "unique": true
                   }
                },
                {
                   "name": "name",
-                  "description": "A short, human-readable, machine-read-friendly label for this Uberon term",
-                  "type": "string"
+                  "description": "A short, human-readable, machine-read-friendly label for this UBERON term",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
                },
                {
                   "name": "description",
-                  "description": "A human-readable description of this Uberon term",
+                  "description": "A human-readable description of this UBERON term",
                   "type": "string"
                },
                {
                   "name": "synonyms",
-                  "description": "Pipe-separated list of synonyms (alternate Uberon terms) equivalent to this Uberon term",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^(UBERON:[0-9]+|)*UBERON:[0-9]+$"
-                  }
+                  "description": "A list of synonyms for this term as identified by the UBERON metadata",
+                  "type": "array"
                }
             ],
             "missingValues": [ "" ],
@@ -1304,6 +1680,13 @@
          "name": "file_format",
          "title": "file_format",
          "path": "file_format.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "List of EDAM CV 'format:' terms used to describe formats of C2M2 files",
          "schema": {
             "fields": [
@@ -1313,14 +1696,17 @@
                   "type": "string",
                   "constraints": {
                      "required": true,
-                     "unique": true,
-                     "pattern": "^format:[0-9]+$"
+                     "unique": true
                   }
                },
                {
                   "name": "name",
                   "description": "A short, human-readable, machine-read-friendly label for this EDAM format term",
-                  "type": "string"
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
                },
                {
                   "name": "description",
@@ -1329,11 +1715,8 @@
                },
                {
                   "name": "synonyms",
-                  "description": "Pipe-separated list of synonyms (alternate EDAM format terms) equivalent to this EDAM format term",
-                  "type": "string",
-                  "constraints": {
-                     "pattern": "^(format:[0-9]+|)*format:[0-9]+$"
-                  }
+                  "description": "A list of synonyms for this term as identified by the EDAM metadata",
+                  "type": "array"
                }
             ],
             "missingValues": [ "" ],
@@ -1345,6 +1728,13 @@
          "name": "data_type",
          "title": "data_type",
          "path": "data_type.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "List of EDAM CV 'data:' terms used to describe data in C2M2 files",
          "schema": {
             "fields": [
@@ -1354,14 +1744,17 @@
                   "type": "string",
                   "constraints": {
                      "required": true,
-                     "unique": true,
-                     "pattern": "^data:[0-9]+$"
+                     "unique": true
                   }
                },
                {
                   "name": "name",
                   "description": "A short, human-readable, machine-read-friendly label for this EDAM data term",
-                  "type": "string"
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
                },
                {
                   "name": "description",
@@ -1370,11 +1763,56 @@
                },
                {
                   "name": "synonyms",
-                  "description": "Pipe-separated list of synonyms (alternate EDAM data terms) equivalent to this EDAM data term",
+                  "description": "A list of synonyms for this term as identified by the EDAM metadata",
+                  "type": "array"
+               }
+            ],
+            "missingValues": [ "" ],
+            "primaryKey": "id"
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "disease",
+         "title": "disease",
+         "path": "disease.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "List of Disease Ontology terms used to describe diseases associated with C2M2 subjects or biosamples",
+         "schema": {
+            "fields": [
+               {
+                  "name": "id",
+                  "description": "A Disease Ontology term",
                   "type": "string",
                   "constraints": {
-                     "pattern": "^(data:[0-9]+|)*data:[0-9]+$"
+                     "required": true,
+                     "unique": true
                   }
+               },
+               {
+                  "name": "name",
+                  "description": "A short, human-readable, machine-read-friendly label for this Disease Ontology term",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "description",
+                  "description": "A human-readable description of this Disease Ontology term",
+                  "type": "string"
+               },
+               {
+                  "name": "synonyms",
+                  "description": "A list of synonyms for this term as identified by the Disease Ontology metadata",
+                  "type": "array"
                }
             ],
             "missingValues": [ "" ],
@@ -1386,20 +1824,28 @@
          "name": "id_namespace",
          "title": "id_namespace",
          "path": "id_namespace.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
          "description": "A table listing identifier namespaces registered by the DCC submitting this C2M2 instance",
          "schema": {
             "fields": [
                {
                   "name": "id",
-                  "description": "ID of the identifier namespace",
+                  "description": "ID of this identifier namespace",
                   "type": "string",
                   "constraints": {
-                     "required": true
+                     "required": true,
+                     "unique": true
                   }
                },
                {
                   "name": "abbreviation",
-                  "description": "A very short display label for this ID namespace",
+                  "description": "A very short display label for this identifier namespace",
                   "type": "string",
                   "constraints": {
                      "pattern": "^[a-zA-Z0-9_]+$"
@@ -1407,12 +1853,16 @@
                },
                {
                   "name": "name",
-                  "description": "A short, human-readable, machine-read-friendly label for this ID namespace",
-                  "type": "string"
+                  "description": "A short, human-readable, machine-read-friendly label for this identifier namespace",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
                },
                {
                   "name": "description",
-                  "description": "A human-readable description of this ID namespace",
+                  "description": "A human-readable description of this identifier namespace",
                   "type": "string"
                }
             ],
