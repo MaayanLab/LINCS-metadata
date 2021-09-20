@@ -3,7 +3,7 @@ works in its own thread across any threads that access it.
 '''
 import json
 from subprocess import Popen, PIPE, STDOUT
-from threading import Thread, Event, Lock
+from threading import Thread, Event, Lock, get_ident
 from queue import Queue, Empty
 from contextlib import contextmanager
 
@@ -47,8 +47,8 @@ class SigcomValidatorClient(Thread):
           ret = json.loads(proc.stdout.readline())
           # update data and trigger event
           with acquire_with_timeout(self._data_lock):
-            evt = self._data[item['id']]
-            self._data[item['id']] = ret
+            evt = self._data[item['persistent_id']]
+            self._data[item['persistent_id']] = ret
             evt.set()
           # move on
           self._queue.task_done()
@@ -73,9 +73,26 @@ class SigcomValidatorClient(Thread):
     value.wait(timeout=10)
     return self.fetch(item)
 
+class SigcomValidatorMultiClient:
+  ''' Create a SigcomValidatorClient for each thread
+  '''
+  def __init__(self):
+    self.clients = {}
+  #
+  def join(self):
+    while self.clients:
+      _, client = self.clients.popitem()
+      client.join()
+  #
+  def fetch(self, item):
+    thread_id = get_ident()
+    if thread_id not in self.clients:
+      self.clients[thread_id] = SigcomValidatorClient()
+      self.clients[thread_id].start()
+    return self.clients[thread_id].fetch(item)
+
 @contextmanager
 def create_sigcom_validator_client():
-  sigcom_validator_client = SigcomValidatorClient()
-  sigcom_validator_client.start()
+  sigcom_validator_client = SigcomValidatorMultiClient()
   yield sigcom_validator_client
   sigcom_validator_client.join()

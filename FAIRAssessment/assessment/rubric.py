@@ -211,7 +211,7 @@ def _(signature, **kwargs):
       }
 
 #%%
-MONDO = OBOOntology.parse(fetch_cache('http://purl.obolibrary.org/obo/mondo.obo', 'mondo.obo'))
+DOID = OBOOntology.parse(fetch_cache('https://github.com/DiseaseOntology/HumanDiseaseOntology/raw/main/src/ontology/releases/doid.obo', 'doid.obo'))
 
 @_register_metric({
   '@id': 141,
@@ -220,7 +220,29 @@ MONDO = OBOOntology.parse(fetch_cache('http://purl.obolibrary.org/obo/mondo.obo'
   'principle': 'Interoperable',
 })
 def _(signature, **kwargs):
-  if signature['meta'].get('cellline', signature['meta'].get('cell_line')):
+  if signature['meta'].get('doid'):
+    if DOID.get(signature['meta']['doid']) is not None:
+      yield {
+        'value': 1.0,
+        'comment': 'DOID present and validated in DO',
+      }
+    else:
+      yield {
+        'value': 0.5,
+        'comment': 'DOID present but could not be validated',
+      }
+  elif signature['meta'].get('disease'):
+    if DOID.reversed_synonyms().get(signature['meta']['disease']):
+      yield {
+        'value': 0.75,
+        'comment': 'DOID not provided but DOID for disease found',
+      }
+    else:
+      yield {
+        'value': 0.25,
+        'comment': 'DOID not provided and disease not found in DO',
+      }
+  elif signature['meta'].get('cellline', signature['meta'].get('cell_line')):
     yield {
       'value': 0.25,
       'comment': 'No disease found, but cell line is present thus it might be resolvable',
