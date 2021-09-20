@@ -3,7 +3,10 @@
 We investigate the assessment results using the [C2M2 assessment](https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2)
 on the LINCS metadata C2M2 serializations and a custom [FAIR Assessment](https://github.com/nih-cfde/LINCS-metadata/tree/main/FAIRAssessment/assessment) directly on the LINCS portal metadata.
 
-## Step 1. Perform FAIR Assessement on LINCS C2M2 Datapackage using [C2M2 assessment](https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2). Also possible via the [Appyter](https://appyters.maayanlab.cloud/#/?q=cfde).
+## Step 1. Perform FAIR Assessement on LINCS C2M2 Datapackage using [C2M2 assessment](https://github.com/nih-cfde/FAIR/tree/master/Demos/FAIRAssessment/c2m2).
+
+NOTE: Also possible via the [Appyter](https://appyters.maayanlab.cloud/#/?q=cfde).
+
 ```bash
 # Get LINCS-metadata
 git clone https://github.com/nih-cfde/LINCS-metadata.git
