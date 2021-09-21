@@ -101,19 +101,6 @@ c2m2
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -290,19 +277,6 @@ c2m2.pivot_table(index='metric', columns='label', values='value', aggfunc='mean'
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -421,19 +395,6 @@ c2m2.pivot_table(index='metric', columns='label', values='value', aggfunc='mean'
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -527,19 +488,6 @@ c2m2.pivot_table(index='metric', columns='label', values='value', aggfunc='mean'
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -631,19 +579,6 @@ lincs
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -801,36 +736,38 @@ lincs
 
 
 ```python
-# Take a sample of the individual item answers
-labels = lincs['label'].unique(); labels.sort()
-metrics = lincs['metric'].unique(); metrics.sort()
-fig, axes = plt.subplots(1, len(labels), figsize=(6*len(labels), 6))
-for i, (label, ax) in enumerate(zip(labels, axes)):
-  records = lincs[lincs['label'] == label]
-  answer_matrix = records.groupby(['target_id', 'metric'])['answer_value'].mean().unstack()
-  sns.heatmap(sorted_indices(answer_matrix.sample(1000).fillna(0).T), yticklabels=(i == 0), xticklabels=False, ax=ax)
-  ax.set_ylabel('')
-  ax.set_xlabel('File')
-  ax.set_title(label)
-plt.show()
+def multigrids(*Xs, **kwargs):
+  ''' A helper function for aligning heatmaps in a row
+  '''
+  all_cols = {col for X in Xs for col in X.columns}
+  for X in Xs:
+    for col in all_cols - set(X.columns):
+      X[col] = float('nan')
+  all_cols = sorted(all_cols)
+  fig, axes = plt.subplots(1, 2, figsize=(6*len(Xs), 6))
+  for i, (ax, X) in enumerate(zip(axes, Xs)):
+    sns.heatmap(X[all_cols].T, yticklabels=(i==0), ax=ax, **kwargs)
+  return axes
 ```
 
 
-![png](./figures/output_11_0.png)
-
-
-
 ```python
-# See average answer per library
+# Take a sample of the individual item answers
 labels = lincs['label'].unique(); labels.sort()
-fig, axes = plt.subplots(1, len(labels), figsize=(6*len(labels), 6))
-for i, (label, ax) in enumerate(zip(labels, axes)):
-  records = lincs[lincs['label'] == label]
-  answer_matrix = records.groupby(['target_library', 'metric'])['answer_value'].mean().unstack()
-  sns.heatmap(sorted_indices(answer_matrix.T), yticklabels=(i == 0), ax=ax)
-  ax.tick_params(left=False, bottom=True)
-  ax.set_ylabel('')
+metrics = lincs['metric'].unique(); metrics.sort()
+axes = multigrids(*[
+  lincs[lincs['label'] == label]
+    .groupby(['target_id', 'metric'])['answer_value']
+    .mean()
+    .unstack()
+    .sample(1000)
+    .fillna(0)
+  for label in labels
+])
+for ax, label in zip(axes, labels):
   ax.set_title(label)
+  ax.set_ylabel('')
+  ax.set_xlabel('File')
 plt.show()
 ```
 
@@ -838,34 +775,47 @@ plt.show()
 ![png](./figures/output_12_0.png)
 
 
+
+```python
+# See average answer per library
+labels = lincs['label'].unique(); labels.sort()
+axes = multigrids(*[
+  sorted_indices(
+    lincs[lincs['label'] == label]
+      .groupby(['target_library', 'metric'])['answer_value']
+      .mean()
+      .unstack()
+  )
+  for label in labels
+])
+for ax, label in zip(axes, labels):
+  ax.set_title(label)
+  ax.set_ylabel('')
+  ax.tick_params(left=False, bottom=True)
+plt.show()
+```
+
+
+![png](./figures/output_13_0.png)
+
+
 ## Step 3. Compare assessment on C2M2 with SigCom-LINCS Assessment
 
 
 ```python
-lincs_grid = lincs.pivot_table(columns='metric', index='label', values='answer_value', aggfunc='mean')
-c2m2_grid = c2m2.pivot_table(columns='metric', index='label', values='value', aggfunc='mean')
-# put NaNs wherever the grid columns don't overlap
-for col in c2m2_grid.columns:
-  if col not in lincs_grid.columns:
-    lincs_grid[col] = float('nan')
-for col in lincs_grid.columns:
-  if col not in c2m2_grid.columns:
-    c2m2_grid[col] = float('nan')
-cols = list(set(c2m2_grid.columns) & set(lincs_grid.columns))
-lincs_grid = lincs_grid[cols].T
-c2m2_grid = c2m2_grid[cols].T
-
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
-sns.heatmap(lincs_grid, annot=True, ax=ax1)
+ax1, ax2 = multigrids(
+  lincs.pivot_table(columns='metric', index='label', values='answer_value', aggfunc='mean'),
+  c2m2.pivot_table(columns='metric', index='label', values='value', aggfunc='mean'),
+  annot=True
+)
 ax1.set_title('LINCS')
-sns.heatmap(c2m2_grid, annot=True, yticklabels=False, ax=ax2)
 ax2.set_title('C2M2')
 ax2.set_ylabel('')
 plt.show()
 ```
 
 
-![png](./figures/output_14_0.png)
+![png](./figures/output_15_0.png)
 
 
 ## Step 4. Prepare Current Assessment Summaries for FAIRshake
@@ -897,19 +847,6 @@ current
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
