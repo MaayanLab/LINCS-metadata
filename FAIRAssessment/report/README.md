@@ -545,7 +545,7 @@ python3.8 ./LINCS-metadata/FAIRAssessment/assessment/assess.py \
 
 
 ```python
-# get lincs library metadata from sigcom-lincs
+# get lincs library metadata from lincs
 lincs_libraries = {
     library['id']: library
     for library in requests.get('https://maayanlab.cloud/sigcom-lincs/metadata-api/libraries').json()
@@ -668,68 +668,68 @@ lincs
       <td>...</td>
     </tr>
     <tr>
-      <th>35272097</th>
-      <td>2021-09-20</td>
-      <td>144</td>
-      <td>Cell Line (Interoperable)</td>
-      <td>0.50</td>
-      <td>Ontological IRI not found, but cell line found...</td>
-      <td>U2OS</td>
-      <td>bdb99682-fd7d-573c-8139-625283fb1536</td>
-      <td>8f1ff550-ece8-591d-a213-2763f854c008</td>
-      <td>l1000_shRNA</td>
-    </tr>
-    <tr>
-      <th>35272098</th>
+      <th>36331547</th>
       <td>2021-09-20</td>
       <td>116</td>
       <td>Data Usage License (Reusable)</td>
       <td>0.00</td>
       <td>No information about data usage licenses are d...</td>
       <td>None</td>
-      <td>bdb99682-fd7d-573c-8139-625283fb1536</td>
+      <td>11b1ac34-ef93-55a4-8244-9e8f928ef19a</td>
       <td>8f1ff550-ece8-591d-a213-2763f854c008</td>
       <td>l1000_shRNA</td>
     </tr>
     <tr>
-      <th>35272099</th>
+      <th>36331548</th>
       <td>2021-09-20</td>
       <td>104</td>
       <td>Persistent identifier (Findable)</td>
       <td>0.00</td>
       <td>No persistent_id defined</td>
       <td>None</td>
-      <td>bdb99682-fd7d-573c-8139-625283fb1536</td>
+      <td>11b1ac34-ef93-55a4-8244-9e8f928ef19a</td>
       <td>8f1ff550-ece8-591d-a213-2763f854c008</td>
       <td>l1000_shRNA</td>
     </tr>
     <tr>
-      <th>35272100</th>
+      <th>36331549</th>
       <td>2021-09-20</td>
       <td>108</td>
       <td>Resource identifier (Findable)</td>
       <td>1.00</td>
       <td>A resource id is present</td>
-      <td>bdb99682-fd7d-573c-8139-625283fb1536</td>
-      <td>bdb99682-fd7d-573c-8139-625283fb1536</td>
+      <td>11b1ac34-ef93-55a4-8244-9e8f928ef19a</td>
+      <td>11b1ac34-ef93-55a4-8244-9e8f928ef19a</td>
       <td>8f1ff550-ece8-591d-a213-2763f854c008</td>
       <td>l1000_shRNA</td>
     </tr>
     <tr>
-      <th>35272101</th>
+      <th>36331550</th>
       <td>2021-09-20</td>
       <td>145</td>
       <td>Landing Page (Findable)</td>
       <td>1.00</td>
       <td>valid and GET reports 200</td>
-      <td>https://ldp3.cloud/#/Signatures/bdb99682-fd7d-...</td>
-      <td>bdb99682-fd7d-573c-8139-625283fb1536</td>
+      <td>https://ldp3.cloud/#/Signatures/11b1ac34-ef93-...</td>
+      <td>11b1ac34-ef93-55a4-8244-9e8f928ef19a</td>
+      <td>8f1ff550-ece8-591d-a213-2763f854c008</td>
+      <td>l1000_shRNA</td>
+    </tr>
+    <tr>
+      <th>36331551</th>
+      <td>2021-09-20</td>
+      <td>310</td>
+      <td>PubChem Drug (Interoperable)</td>
+      <td>0.50</td>
+      <td>Drug term is present but not pubchem verifiable</td>
+      <td>None</td>
+      <td>11b1ac34-ef93-55a4-8244-9e8f928ef19a</td>
       <td>8f1ff550-ece8-591d-a213-2763f854c008</td>
       <td>l1000_shRNA</td>
     </tr>
   </tbody>
 </table>
-<p>35272102 rows × 9 columns</p>
+<p>36331552 rows × 9 columns</p>
 </div>
 
 
@@ -772,7 +772,7 @@ plt.show()
 ```
 
 
-![png](./figures/output_12_0.png)
+![png](output_12_0.png)
 
 
 
@@ -796,10 +796,10 @@ plt.show()
 ```
 
 
-![png](./figures/output_13_0.png)
+![png](output_13_0.png)
 
 
-## Step 3. Compare assessment on C2M2 with SigCom-LINCS Assessment
+## Step 3. Compare assessment on C2M2 with LINCS Assessment
 
 
 ```python
@@ -815,7 +815,7 @@ plt.show()
 ```
 
 
-![png](./figures/output_15_0.png)
+![png](output_15_0.png)
 
 
 ## Step 4. Prepare Current Assessment Summaries for FAIRshake
@@ -826,7 +826,7 @@ summary assessments and submitting these to FAIRshake.
 
 Effectively, the heatmaps we looked at above will be registered with FAIRshake
 for external review and historical archiving. These per-library results
-will also be available as FAIR Insignias on SigCom-LINCS with the help of FAIRshake.
+will also be available as FAIR Insignias on the LINCS Portal with the help of FAIRshake.
 
 
 ```python
@@ -834,7 +834,7 @@ from collections import OrderedDict
 fairshake = OrderedDict()
 ```
 
-### SigCom-LINCS Assessments
+### LINCS Assessments
 
 
 ```python
