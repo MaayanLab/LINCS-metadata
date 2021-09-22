@@ -38,13 +38,13 @@ class NCBITaxonClient(Thread):
           self._queue.task_done()
           break
         # process an item on the queue
+        time.sleep(0.1)
         try:
           T = xml.etree.ElementTree.parse(
             urllib.request.urlopen(
               f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=taxonomy&id={quote(id)}"
             )
           )
-          time.sleep(1)
           t = T.find('Taxon')
           ret = {
             'taxid': t.find('TaxId').text,

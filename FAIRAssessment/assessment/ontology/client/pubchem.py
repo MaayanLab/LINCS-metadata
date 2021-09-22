@@ -49,11 +49,11 @@ class PubChemClient(Thread):
           self._queue.task_done()
           break
         # process an item on the queue
+        time.sleep(0.1)
         try:
           T = json.load(urllib.request.urlopen(
             f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{urllib.parse.quote(id)}/description/json"
           ))
-          time.sleep(1)
           cid, title = one_and_only(
             set(
               (info['CID'], info['Title'])
