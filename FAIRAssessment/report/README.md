@@ -772,7 +772,7 @@ plt.show()
 ```
 
 
-![png](output_12_0.png)
+![png](./figures/output_12_0.png)
 
 
 
@@ -796,7 +796,7 @@ plt.show()
 ```
 
 
-![png](output_13_0.png)
+![png](./figures/output_13_0.png)
 
 
 ## Step 3. Compare assessment on C2M2 with LINCS Assessment
@@ -815,7 +815,7 @@ plt.show()
 ```
 
 
-![png](output_15_0.png)
+![png](./figures/output_15_0.png)
 
 
 ## Step 4. Prepare Current Assessment Summaries for FAIRshake
