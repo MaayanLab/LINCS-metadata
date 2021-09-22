@@ -453,8 +453,19 @@ NCBIGenes = NCBIGeneOntology()
 def _(signature, **kwargs):
   # NOTE: this is convoluted, we will consider best coverage as 0.75
   #       because of the inconsistent access paradigm.
-  targets = signature['meta'].get('clueIoGeneTargets', '')
-  targets = [] if targets.lower() in {'','na'} else [f"ncbigene:{gene}" for gene in targets.split('|')]
+  if signature['meta'].get('pert_type') == 'CRISPR Knockout':
+    if 'pert_name' in signature['meta']:
+      targets = [f"ncbigene:{signature['meta']['pert_name']}"] 
+    else:
+      targets = []
+      yield {
+        'value': 0.0,
+        'comment': 'NCBIGene missing for CRISPR Knockout',
+      }
+  else:
+    targets = signature['meta'].get('clueIoGeneTargets', '')
+    targets = [] if targets.lower() in {'','na'} else [f"ncbigene:{gene}" for gene in targets.split('|')]
+  #
   for ncbigene in targets:
     if NCBIGenes.get(ncbigene) is not None:
       yield {
@@ -491,18 +502,19 @@ def _(signature, pubchem_client=None, **kwargs):
   # drug = signature['meta'].get('pubChemID',
   #   signature['meta'].get('perturbagenID')
   # )
-  drug = signature['meta'].get('treatment')
-  if drug:
-    drug_resolved = pubchem_client.fetch(str(drug))
-    if drug_resolved is not None:
-      yield {
-        'value': 1,
-        'comment': 'Drug term is present and validated in pubchem',
-        'url_comment': drug_resolved,
-      }
-    else:
-      yield {
-        'value': 0.5,
-        'comment': 'Drug term is present but not pubchem verifiable',
-        'url_comment': drug_resolved,
-      }
+  if signature['meta'].get('pert_type') != 'CRISPR Knockout':
+    drug = signature['meta'].get('pert_name', signature['meta'].get('treatment'))
+    if drug:
+      drug_resolved = pubchem_client.fetch(str(drug))
+      if drug_resolved is not None:
+        yield {
+          'value': 0.75,
+          'comment': 'Drug term is present and validated in pubchem',
+          'url_comment': drug_resolved,
+        }
+      else:
+        yield {
+          'value': 0.5,
+          'comment': 'Drug term is present but not pubchem verifiable',
+          'url_comment': drug_resolved,
+        }
