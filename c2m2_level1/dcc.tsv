@@ -1,0 +1,2 @@
+id	dcc_name	dcc_abbreviation	dcc_description	contact_email	contact_name	dcc_url	project_id_namespace	project_local_id
+cfde_registry_dcc:lincs	Library of Integrated Network-based Cellular Signatures	LINCS	The Library of Integrated Network-Based Cellular Signatures (LINCS) Program aims to create a network-based understanding of biology by cataloging changes in gene expression and other cellular processes that occur when cells are exposed to a variety of perturbing agents.	avi.maayan@mssm.edu	Avi Ma'ayan	https://www.lincsproject.org/	https://www.lincsproject.org/	LINCS

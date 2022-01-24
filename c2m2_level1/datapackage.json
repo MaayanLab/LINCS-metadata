@@ -68,7 +68,7 @@
                },
                {
                   "name": "uncompressed_size_in_bytes",
-                  "description": "The total decompressed size in bytes of the contents of this file",
+                  "description": "The total decompressed size in bytes of the contents of this file: null if this file is not compressed",
                   "type": "integer"
                },
                {
@@ -93,12 +93,17 @@
                },
                {
                   "name": "file_format",
-                  "description": "An EDAM CV term ID identifying the digital format of this file (e.g. TSV or FASTQ)",
+                  "description": "An EDAM CV term ID identifying the digital format of this file (e.g. TSV or FASTQ): if this file is compressed, this should be its _uncompressed_ format",
+                  "type": "string"
+               },
+               {
+                  "name": "compression_format",
+                  "description": "An EDAM CV term ID identifying the compression format of this file (e.g. gzip or bzip2): null if this file is not compressed",
                   "type": "string"
                },
                {
                   "name": "data_type",
-                  "description": "An EDAM CV term ID identifying the type of information stored in this file (e.g. RNA sequence reads)",
+                  "description": "An EDAM CV term ID identifying the type of information stored in this file (e.g. RNA sequence reads): null if is_bundle is set to true",
                   "type": "string"
                },
                {
@@ -109,6 +114,16 @@
                {
                   "name": "mime_type",
                   "description": "A MIME type describing this file",
+                  "type": "string"
+               },
+               {
+                  "name": "bundle_collection_id_namespace",
+                  "description": "If this file is a bundle encoding more than one sub-file, this field gives the id_namespace of a collection listing the bundle's sub-file contents. Null otherwise.",
+                  "type": "string"
+               },
+               {
+                  "name": "bundle_collection_local_id",
+                  "description": "If this file is a bundle encoding more than one sub-file, this field gives the local_id of a collection listing the bundle's sub-file contents. Null otherwise.",
                   "type": "string"
                }
             ],
@@ -137,6 +152,13 @@
                   }
                },
                {
+                  "fields": "compression_format",
+                  "reference": {
+                     "resource": "file_format",
+                     "fields": "id"
+                  }
+               },
+               {
                   "fields": "data_type",
                   "reference": {
                      "resource": "data_type",
@@ -148,6 +170,13 @@
                   "reference": {
                      "resource": "assay_type",
                      "fields": "id"
+                  }
+               },
+               {
+                  "fields": [ "bundle_collection_id_namespace", "bundle_collection_local_id" ],
+                  "reference": {
+                     "resource": "collection",
+                     "fields": [ "id_namespace", "local_id" ]
                   }
                }
             ]
@@ -329,6 +358,32 @@
                   "constraints": {
                      "required": true
                   }
+               },
+               {
+                  "name": "sex",
+                  "description": "The sex of this subject",
+                  "type": "string",
+                  "enum": [
+                     "cfde_subject_sex:0",
+                     "cfde_subject_sex:1",
+                     "cfde_subject_sex:2",
+                     "cfde_subject_sex:3",
+                     "cfde_subject_sex:4"
+                  ]
+               },
+               {
+                  "name": "ethnicity",
+                  "description": "The ethnicity of this subject",
+                  "type": "string",
+                  "enum": [
+                     "cfde_subject_ethnicity:0",
+                     "cfde_subject_ethnicity:1"
+                  ]
+               },
+               {
+                  "name": "age_at_enrollment",
+                  "description": "The age in years (with a fixed precision of two digits past the decimal point) of this subject when they were first enrolled in the primary project within which they were studied",
+                  "type": "number"
                }
             ],
             "missingValues": [ "" ],
@@ -353,9 +408,9 @@
       },
       {
          "profile": "tabular-data-resource",
-         "name": "primary_dcc_contact",
-         "title": "primary_dcc_contact",
-         "path": "primary_dcc_contact.tsv",
+         "name": "dcc",
+         "title": "DCC",
+         "path": "dcc.tsv",
          "dialect": {
             "delimiter": "\t",
             "doubleQuote": false,
@@ -363,37 +418,20 @@
             "skipInitialSpace": true,
             "header": true
          },
-         "description": "One primary contact person for the Common Fund data coordinating center (DCC, identified by the given project foreign key) that produced this C2M2 instance",
+         "description": "The Common Fund program or data coordinating center (DCC, identified by the given project foreign key) that produced this C2M2 instance",
          "schema": {
             "fields": [
                {
-                  "name": "contact_email",
-                  "description": "Email address of this DCC contact",
-                  "type": "string",
-                  "format": "email",
-                  "constraints": {
-                     "required": true
-                  }
-               },
-               {
-                  "name": "contact_name",
-                  "description": "Name of this DCC contact",
+                  "name": "id",
+                  "description": "The identifier for this DCC, issued by the CFDE-CC.",
                   "type": "string",
                   "constraints": {
                      "required": true
                   }
                },
                {
-                  "name": "project_id_namespace",
-                  "description": "The id_namespace of the project record representing this contact's DCC [part 1 of 2-component composite foreign key]",
-                  "type": "string",
-                  "constraints": {
-                     "required": true
-                  }
-               },
-               {
-                  "name": "project_local_id",
-                  "description": "The local_id of the project record representing this contact's DCC [part 2 of 2-component composite foreign key]",
+                  "name": "dcc_name",
+                  "description": "A short, human-readable, machine-read-friendly label for this DCC.",
                   "type": "string",
                   "constraints": {
                      "required": true
@@ -405,25 +443,52 @@
                   "type": "string",
                   "constraints": {
                      "required": true,
+                     "unique": true,
                      "pattern": "^[a-zA-Z0-9_]+$"
                   }
                },
                {
-                  "name": "dcc_name",
-                  "description": "A short, human-readable, machine-read-friendly label for this contact's DCC",
+                  "name": "dcc_description",
+                  "description": "A human-readable description of this DCC.",
+                  "type": "string"
+               },
+               {
+                  "name": "contact_email",
+                  "description": "Email address of this DCC's primary contact.",
+                  "type": "string",
+                  "format": "email",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "contact_name",
+                  "description": "Name of this DCC's primary contact.",
                   "type": "string",
                   "constraints": {
                      "required": true
                   }
                },
                {
-                  "name": "dcc_description",
-                  "description": "A human-readable description of this contact's DCC",
-                  "type": "string"
+                  "name": "dcc_url",
+                  "description": "URL of the front page of the website for this DCC",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
                },
                {
-                  "name": "dcc_url",
-                  "description": "URL of the front page of the website for this contact's DCC",
+                  "name": "project_id_namespace",
+                  "description": "ID of the identifier namespace for the project record representing the top-level C2M2 metadataset produced by this DCC.",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "project_local_id",
+                  "description": "Foreign key identifying the project record representing the top-level C2M2 metadataset produced by this DCC.",
                   "type": "string",
                   "constraints": {
                      "required": true
@@ -431,10 +496,11 @@
                }
             ],
             "missingValues": [ "" ],
-            "primaryKey": [ "contact_email" ],
+            "primaryKey": [ "id" ],
             "foreignKeys": [
                {
                   "fields": [ "project_id_namespace", "project_local_id" ],
+                  "constraint_name": "dcc_project_fkey",
                   "reference": {
                      "resource": "project",
                      "fields": [ "id_namespace", "local_id" ]
@@ -1289,8 +1355,14 @@
                   "constraints": {
                      "required": true
                   }
-               }
+               },
+               {
+                  "name": "age_at_sampling",
+                  "description": "The age in years (with a fixed precision of two digits past the decimal point) of this subject when this biosample was taken",
+                  "type": "number"
+               }   
             ],
+            "missingValues": [ "" ],
             "primaryKey": [
                "biosample_id_namespace",
                "biosample_local_id",
@@ -1436,6 +1508,255 @@
                   "reference": {
                      "resource": "disease",
                      "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "biosample_substance",
+         "title": "biosample_substance",
+         "path": "biosample_substance.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Association between a C2M2 biosample and a PubChem substance experimentally associated with that biosample",
+         "schema": {
+            "fields": [
+               {
+                  "name": "biosample_id_namespace",
+                  "description": "Identifier namespace for this biosample",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "biosample_local_id",
+                  "description": "The ID of this biosample",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "substance",
+                  "description": "A PubChem substance ID (SID) describing this substance",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "primaryKey": [
+               "biosample_id_namespace",
+               "biosample_local_id",
+               "substance"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "biosample_id_namespace", "biosample_local_id" ],
+                  "reference": {
+                     "resource": "biosample",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": "substance",
+                  "reference": {
+                     "resource": "substance",
+                     "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "subject_substance",
+         "title": "subject_substance",
+         "path": "subject_substance.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Association between a C2M2 subject and a PubChem substance experimentally associated with that subject",
+         "schema": {
+            "fields": [
+               {
+                  "name": "subject_id_namespace",
+                  "description": "Identifier namespace for this subject",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "subject_local_id",
+                  "description": "The ID of this subject",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "substance",
+                  "description": "A PubChem substance ID (SID) describing this substance",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "primaryKey": [
+               "subject_id_namespace",
+               "subject_local_id",
+               "substance"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "subject_id_namespace", "subject_local_id" ],
+                  "reference": {
+                     "resource": "subject",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": "substance",
+                  "reference": {
+                     "resource": "substance",
+                     "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "biosample_gene",
+         "title": "biosample_gene",
+         "path": "biosample_gene.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Association between a C2M2 biosample and an Ensembl gene especially relevant to it",
+         "schema": {
+            "fields": [
+               {
+                  "name": "biosample_id_namespace",
+                  "description": "Identifier namespace for this biosample",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "biosample_local_id",
+                  "description": "The ID of this biosample",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "gene",
+                  "description": "An Ensembl gene ID",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "primaryKey": [
+               "biosample_id_namespace",
+               "biosample_local_id",
+               "gene"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "biosample_id_namespace", "biosample_local_id" ],
+                  "reference": {
+                     "resource": "biosample",
+                     "fields": [ "id_namespace", "local_id" ]
+                  }
+               },
+               {
+                  "fields": "gene",
+                  "reference": {
+                     "resource": "gene",
+                     "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "subject_race",
+         "title": "subject_race",
+         "path": "subject_race.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "Identification of a C2M2 subject with one or more self-selected races",
+         "schema": {
+            "fields": [
+               {
+                  "name": "subject_id_namespace",
+                  "description": "Identifier namespace for this subject",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "subject_local_id",
+                  "description": "The ID of this subject",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               },
+               {
+                  "name": "race",
+                  "description": "A race self-identified by this subject",
+                  "type": "string",
+                  "enum": [
+                     "cfde_subject_race:0",
+                     "cfde_subject_race:1",
+                     "cfde_subject_race:2",
+                     "cfde_subject_race:3",
+                     "cfde_subject_race:4"
+                  ]
+               }
+            ],
+            "primaryKey": [
+               "subject_id_namespace",
+               "subject_local_id",
+               "race"
+            ],
+            "foreignKeys": [
+               {
+                  "fields": [ "subject_id_namespace", "subject_local_id" ],
+                  "reference": {
+                     "resource": "subject",
+                     "fields": [ "id_namespace", "local_id" ]
                   }
                }
             ]
@@ -1817,6 +2138,185 @@
             ],
             "missingValues": [ "" ],
             "primaryKey": "id"
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "compound",
+         "title": "compound",
+         "path": "compound.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "List of PubChem 'compound' terms (normalized chemical structures) associated with PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this C2M2 submission",
+         "schema": {
+            "fields": [
+               {
+                  "name": "id",
+                  "description": "A PubChem compound ID (CID)",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "name",
+                  "description": "A short, human-readable, machine-read-friendly label for this PubChem CID",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "description",
+                  "description": "A human-readable description of this PubChem CID",
+                  "type": "string"
+               },
+               {
+                  "name": "synonyms",
+                  "description": "A list of synonyms for this PubChem CID",
+                  "type": "array"
+               }
+            ],
+            "missingValues": [ "" ],
+            "primaryKey": "id"
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "substance",
+         "title": "substance",
+         "path": "substance.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "List of PubChem 'substance' terms (specific formulations of chemical materials) directly referenced in this C2M2 submission",
+         "schema": {
+            "fields": [
+               {
+                  "name": "id",
+                  "description": "A PubChem substance ID (SID)",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "name",
+                  "description": "A short, human-readable, machine-read-friendly label for this PubChem SID",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "description",
+                  "description": "A human-readable description of this PubChem SID",
+                  "type": "string"
+               },
+               {
+                  "name": "synonyms",
+                  "description": "A list of synonyms for this PubChem SID",
+                  "type": "array"
+               },
+               {
+                  "name": "compound",
+                  "description": "The (unique) PubChem compound ID (CID) associated with this PubChem SID",
+                  "type": "string",
+                  "constraints": {
+                     "required": true
+                  }
+               }
+            ],
+            "missingValues": [ "" ],
+            "primaryKey": "id",
+            "foreignKeys": [
+               {
+                  "fields": "compound",
+                  "reference": {
+                     "resource": "compound",
+                     "fields": "id"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "profile": "tabular-data-resource",
+         "name": "gene",
+         "title": "gene",
+         "path": "gene.tsv",
+         "dialect": {
+            "delimiter": "\t",
+            "doubleQuote": false,
+            "lineTerminator": "\n",
+            "skipInitialSpace": true,
+            "header": true
+         },
+         "description": "List of Ensembl genes directly referenced in this C2M2 submission",
+         "schema": {
+            "fields": [
+               {
+                  "name": "id",
+                  "description": "An Ensembl gene ID (e.g. 'ENSG00000012048')",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "name",
+                  "description": "The Ensembl 'Name' for this gene (e.g. 'BRCA1')",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "unique": true
+                  }
+               },
+               {
+                  "name": "description",
+                  "description": "The Ensembl 'Description' of this gene (e.g. 'BRCA1 DNA repair associated')",
+                  "type": "string"
+               },
+               {
+                  "name": "synonyms",
+                  "description": "A list of Ensembl 'Gene synonyms' for this gene (e.g. ['BRCC1', 'FANCS', 'PPP1R53', 'RNF53'])",
+                  "type": "array"
+               },
+               {
+                  "name": "organism",
+                  "description": "An NCBI Taxonomy Database ID identifying this gene's source organism (e.g. 'NCBItxid9606'",
+                  "type": "string",
+                  "constraints": {
+                     "required": true,
+                     "pattern": "^NCBI:txid[0-9]+$"
+                  }
+               }
+            ],
+            "missingValues": [ "" ],
+            "primaryKey": "id",
+            "foreignKeys": [
+               {
+                  "fields": "organism",
+                  "reference": {
+                     "resource": "ncbi_taxonomy",
+                     "fields": "id"
+                  }
+               }
+            ]
          }
       },
       {
