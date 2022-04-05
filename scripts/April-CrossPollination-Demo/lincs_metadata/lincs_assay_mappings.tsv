@@ -1,0 +1,33 @@
+lincs_assayname	lincs_technologies	bao_assay_id	obi_assay_id	edam_format_id	edam_data_type_id	mime_type
+Aggregated small molecule biochemical target activity		BAO:0010050	OBI:0001632			
+Aggregated small molecule biochemical target activity	Bead-based immunoassay	BAO:0010050	OBI:0002970	format:3475	data:2603	text/tab-separated-values
+ATAC-seq epigenetic profiling assay	ATAC-seq	BAO:0010038	OBI:0002039	format:3612	data:3002	
+Bead-based immunoassay for protein state	Bead-based immunoassay	BAO:0010050	OBI:0002970	format:3475	data:2603	text/tab-separated-values
+ELISA protein secretion profiling assay	ELISA	BAO:0000134	OBI:0000661	format:3475	data:2603	text/tab-separated-values
+ELISA protein state assay	ELISA	BAO:0000134	OBI:0000661	format:3475	data:2603	text/tab-separated-values
+Fluorescence imaging apoptosis assay	Fluorescence imaging	BAO:0010053	OBI:0002946	format:3475	data:1566	text/tab-separated-values
+Fluorescence imaging cell count assay	Fluorescence imaging	BAO:0010054	OBI:0002947	format:3475	data:1566	text/tab-separated-values
+Fluorescence imaging cell cycle state assay	Fluorescence imaging	BAO:0010055	OBI:0002948	format:3475	data:1566	text/tab-separated-values
+Fluorescence imaging cell growth inhibition assay	Fluorescence imaging	BAO:0010056	OBI:0002947	format:3751	data:1566	text/plain
+Fluorescence imaging cell viability assay	Fluorescence imaging	BAO:0003009	OBI:0002949	format:3751	data:1566	text/plain
+Fluorescence imaging drug synergy assay	Fluorescence imaging	BAO:0010056	OBI:0002950	format:3752	data:1566	text/csv
+Fluorescence imaging morphology assay	Fluorescence imaging	BAO:0010057	OBI:0002951	format:3475	data:2603	text/tab-separated-values
+Fluorescence imaging multiplex cytological profiling assay	Fluorescence imaging	BAO:0010058	OBI:0002952	format:3475	data:2603	text/tab-separated-values
+Fluorescence imaging protein state assay	Fluorescence imaging	BAO:0010056	OBI:0002954	format:3475	data:2603	text/tab-separated-values
+Fluorescence imaging reporter gene assay	Fluorescence imaging	BAO:0010056	OBI:0002960			
+Global chromatin epigenetic profiling assay	Mass spectrometry	BAO:0000055	OBI:0002961	format:3709	data:2603	application/x-hdf5
+KiNativ kinase-small molecule binding assay	KiNativ	BAO:0002908	OBI:0002964	format:3475	data:1566	text/tab-separated-values
+KINOMEscan kinase-small molecule binding assay	KINOMEscan	BAO:0003011	OBI:0002963	format:3751	data:1566	text/plain
+L1000 mRNA profiling assay	L1000	BAO:0010046	OBI:0002965	format:3475	data:0928	text/tab-separated-values
+MEMA cell growth assay	MEMA (fluorescence imaging)	BAO:0010060	OBI:0002966	format:3475	data:2968	text/tab-separated-values
+Microwestern meso-scale quantitative western blotting assay	Microwestern	BAO:0010049	OBI:0002967	format:3475	data:2603	text/tab-separated-values
+MS protein state assay	Mass spectrometry	BAO:0000055	OBI:0002955	format:3475	data:2603	text/tab-separated-values
+P100 phosphoprotein quantification assay	P100 (mass spectrometry)	BAO:0010063	OBI:0002956	format:3709	data:2603	application/x-hdf5
+Positive/negative ion switching metabolomics	LC-MS	BAO:0010071	OBI:0002968	format:3752	data:2563	text/csv
+Quantitative Real-Time PCR (qPCR)	PCR	BAO:0003031	OBI:0000893	format:3475	data:2603	text/tab-separated-values
+RNA-seq gene expression profiling assay	RNA-seq	BAO:0010045	OBI:0001271	format:3751	data:3112	text/plain
+RPPA protein state assay	Fluorescence imaging	BAO:0010056	OBI:0002957	format:3475	data:2603	text/tab-separated-values
+RPPA protein state assay	RPPA	BAO:0010030	OBI:0002957	format:3475	data:2603	text/tab-separated-values
+SWATH-MS protein quantification assay	SWATH-MS	BAO:0010028	OBI:0002958	format:3620	data:2603	
+Tandem Mass Tag (TMT) Mass Spectrometry	LC-MS/MS	BAO:0010070	OBI:0002959	format:3752	data:3112	text/csv
+To Be Classified						

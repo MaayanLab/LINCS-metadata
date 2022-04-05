@@ -1,0 +1,157 @@
+cell_line	disease	doid
+PC3	prostate adenocarcinoma	DOID:2526
+A375	melanoma	DOID:1909
+A549	lung cancer	DOID:1324
+H1975	lung cancer	DOID:1324
+HEPG2	carcinoma	DOID:305
+HT29	colon adenocarcinoma	DOID:1520
+NCIH1975	lung cancer	DOID:1324
+NCIH2073	lung cancer	DOID:1324
+NCIH508	colon adenocarcinoma	DOID:1520
+NCIH596	lung cancer	DOID:1324
+SKBR3	breast adenocarcinoma	DOID:3459
+SUDHL4	lymphoma	DOID:0060058
+HCC515	lung cancer	DOID:1324
+MCF7	breast adenocarcinoma	DOID:3459
+VCAP	prostate adenocarcinoma	DOID:2526
+HL60	leukemia	DOID:1240
+BT20	breast carcinoma	DOID:3459
+HS578T	breast carcinoma	DOID:3459
+MCF10A	breast carcinoma	DOID:3459
+MDAMB231	breast adenocarcinoma	DOID:3459
+BJAB	lymphoma	DOID:0060058
+HBL1	lymphoma	DOID:0060058
+K562	leukemia	DOID:1240
+KMS34	myeloma	DOID:0070004
+NALM6	leukemia	DOID:1240
+OCILY10	lymphoma	DOID:0060058
+OCILY19	lymphoma	DOID:0060058
+OCILY3	lymphoma	DOID:0060058
+SKMEL5	melanoma	DOID:1909
+THP1	leukemia	DOID:1240
+TMD8	lymphoma	DOID:0060058
+MINO	lymphoma	DOID:0060058
+U937	lymphoma	DOID:0060058
+22RV1	prostate carcinoma	DOID:10286
+A204	rhabdomyosarcoma	DOID:4051
+AGS	gastric adenocarcinoma	DOID:3717
+BC3C	bladder transitional cell carcinoma	DOID:4006
+BEN	lung cancer	DOID:1324
+BICR6	carcinoma	DOID:305
+BT474	breast carcinoma	DOID:3459
+CAL29	bladder transitional cell carcinoma	DOID:4006
+CJM	melanoma	DOID:1909
+COV434	granulosa cell tumor	DOID:2999
+KYSE30	esophageal carcinoma	DOID:1107
+LCLC103H	lung cancer	DOID:1324
+SNU761	hepatocellular carcinoma	DOID:684
+ES2	ovarian carcinoma	DOID:4001
+G401	carcinoma	DOID:305
+GI1	glioblastoma	DOID:3068
+GP2D	colon adenocarcinoma	DOID:1520
+HCC1588	lung cancer	DOID:1324
+HCC95	lung cancer	DOID:1324
+HEC108	endometrial cancer	DOID:363
+HEC151	endometrial cancer	DOID:363
+HEC1A	endometrial cancer	DOID:363
+HEC251	endometrial cancer	DOID:363
+HEC265	endometrial cancer	DOID:363
+IGR37	melanoma	DOID:1909
+IM95	gastric adenocarcinoma	DOID:3717
+JHH5	carcinoma	DOID:305
+JHH7	carcinoma	DOID:305
+LNCAP	prostate carcinoma	DOID:10286
+MDAMB468	breast adenocarcinoma	DOID:3459
+MELHO	melanoma	DOID:1909
+MKN45	gastric adenocarcinoma	DOID:3717
+NCIH1437	lung cancer	DOID:1324
+NCIH1573	lung cancer	DOID:1324
+NCIH2110	lung cancer	DOID:1324
+NCIH2172	lung cancer	DOID:1324
+NCIH838	lung cancer	DOID:1324
+NCIH841	lung cancer	DOID:1324
+OAW28	ovarian cystadenocarcinoma	DOID:3605
+OC316	ovarian adenocarcinoma	DOID:3713
+OVK18	ovarian carcinoma	DOID:4001
+OVTOKO	ovarian adenocarcinoma	DOID:3713
+RCC10RGB	carcinoma	DOID:305
+SH4	melanoma	DOID:1909
+SKES1	ewing's sarcoma	DOID:3247
+SKMEL3	melanoma	DOID:1909
+SNU407	colon carcinoma	DOID:1520
+T47D	breast carcinoma	DOID:3459
+TC32	ewing's sarcoma	DOID:3247
+TOV112D	endometrial cancer	DOID:363
+U251MG	astrocytoma	DOID:3069
+YAPC	pancreatic carcinoma	DOID:4074
+YH13	astrocytoma	DOID:3069
+ZR751	breast carcinoma	DOID:3459
+U2OS	osteosarcoma	DOID:3347
+A673	ewing's sarcoma	DOID:3247
+CL34	colon adenocarcinoma	DOID:1520
+CORL23	lung cancer	DOID:1324
+COV644	ovarian carcinoma	DOID:4001
+DV90	lung cancer	DOID:1324
+EFO27	ovarian carcinoma	DOID:4001
+H1299	lung cancer	DOID:1324
+HCC15	lung cancer	DOID:1324
+HCT116	colon carcinoma	DOID:1520
+HT115	colon carcinoma	DOID:1520
+JHUEM2	endometrial cancer	DOID:363
+LOVO	colon adenocarcinoma	DOID:1520
+MDST8	colon carcinoma	DOID:1520
+NCIH1694	lung cancer	DOID:1324
+NCIH1836	lung cancer	DOID:1324
+NOMO1	leukemia	DOID:1240
+OV7	ovarian carcinoma	DOID:4001
+PL21	leukemia	DOID:1240
+RKO	colon adenocarcinoma	DOID:1520
+RMGI	ovarian carcinoma	DOID:4001
+RMUGS	ovarian carcinoma	DOID:4001
+SKLU1	lung cancer	DOID:1324
+SKM1	leukemia	DOID:1240
+SKMEL1	melanoma	DOID:1909
+SKMEL28	melanoma	DOID:1909
+SNGM	endometrial cancer	DOID:363
+SNU1040	colon carcinoma	DOID:1520
+SNUC4	colon adenocarcinoma	DOID:1520
+SNUC5	colon adenocarcinoma	DOID:1520
+SW480	colon adenocarcinoma	DOID:1520
+SW620	colon adenocarcinoma	DOID:1520
+SW948	colon adenocarcinoma	DOID:1520
+T3M10	lung cancer	DOID:1324
+TYKNU	ovarian carcinoma	DOID:4001
+WSUDLCL2	lymphoma	DOID:0060058
+HUH7	carcinoma	DOID:305
+DU145	prostate carcinoma	DOID:10286
+CW2	colon carcinoma	DOID:1520
+MFE319	endometrial cancer	DOID:363
+OC314	ovarian carcinoma	DOID:4001
+VMCUB1	bladder transitional cell carcinoma	DOID:4006
+5637	bladder carcinoma	DOID:4007
+AN3CA	endometrial cancer	DOID:363
+NCIH1563	lung cancer	DOID:1324
+NCIH1781	lung cancer	DOID:1324
+HCC827	lung cancer	DOID:1324
+J82	bladder carcinoma	DOID:4007
+LN229	astrocytoma	DOID:3069
+OVCAR8	ovarian carcinoma	DOID:4001
+HELA	cervical adenocarcinoma	DOID:3702
+HUH751	hepatoma	DOID:684
+HME1	leukemia	DOID:1240
+JURKAT	leukemia	DOID:1240
+SHSY5Y	neuroblastoma	DOID:769
+HAP1	chronic myeloid leukemia	DOID:8552
+U266B1	myeloma	DOID:0070004
+SKNSH	neuroblastoma	DOID:769
+HCC44	lung cancer	DOID:1324
+DLD1	colon adenocarcinoma	DOID:1520
+TF1	leukemia	DOID:1240
+RWPE1	prostate carcinoma	DOID:10286
+SALE	lung cancer	DOID:1324
+NCIH716	colon adenocarcinoma	DOID:1520
+DANG	pancreatic carcinoma	DOID:4074
+HCC1806	breast carcinoma	DOID:3459
+HS944T	melanoma	DOID:1909
+IPC298	melanoma	DOID:1909
+KELLY	neuroblastoma	DOID:769
