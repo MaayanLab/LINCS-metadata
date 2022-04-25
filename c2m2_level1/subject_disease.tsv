@@ -1,198 +1,198 @@
-subject_id_namespace	subject_local_id	disease
-https://www.lincsproject.org/	HL60	DOID:1240
-https://www.lincsproject.org/	PC3	DOID:2526
-https://www.lincsproject.org/	U937	DOID:0060058
-https://www.lincsproject.org/	MCF7	DOID:3459
-https://www.lincsproject.org/	A375	DOID:1909
-https://www.lincsproject.org/	HCC515	DOID:1324
-https://www.lincsproject.org/	VCAP	DOID:2526
-https://www.lincsproject.org/	HEPG2	DOID:305
-https://www.lincsproject.org/	HT29	DOID:1520
-https://www.lincsproject.org/	A549	DOID:1324
-https://www.lincsproject.org/	A673	DOID:3247
-https://www.lincsproject.org/	AGS	DOID:3717
-https://www.lincsproject.org/	CL34	DOID:1520
-https://www.lincsproject.org/	CORL23	DOID:1324
-https://www.lincsproject.org/	COV644	DOID:4001
-https://www.lincsproject.org/	DV90	DOID:1324
-https://www.lincsproject.org/	EFO27	DOID:4001
-https://www.lincsproject.org/	H1299	DOID:1324
-https://www.lincsproject.org/	HCC15	DOID:1324
-https://www.lincsproject.org/	HCT116	DOID:1520
-https://www.lincsproject.org/	HEC108	DOID:363
-https://www.lincsproject.org/	HT115	DOID:1520
-https://www.lincsproject.org/	JHUEM2	DOID:363
-https://www.lincsproject.org/	LOVO	DOID:1520
-https://www.lincsproject.org/	MDST8	DOID:1520
-https://www.lincsproject.org/	NCIH1694	DOID:1324
-https://www.lincsproject.org/	NCIH1836	DOID:1324
-https://www.lincsproject.org/	NCIH2073	DOID:1324
-https://www.lincsproject.org/	NCIH508	DOID:1520
-https://www.lincsproject.org/	NCIH596	DOID:1324
-https://www.lincsproject.org/	NOMO1	DOID:1240
-https://www.lincsproject.org/	OV7	DOID:4001
-https://www.lincsproject.org/	PL21	DOID:1240
-https://www.lincsproject.org/	RKO	DOID:1520
-https://www.lincsproject.org/	RMGI	DOID:4001
-https://www.lincsproject.org/	RMUGS	DOID:4001
-https://www.lincsproject.org/	SKLU1	DOID:1324
-https://www.lincsproject.org/	SKM1	DOID:1240
-https://www.lincsproject.org/	SKMEL1	DOID:1909
-https://www.lincsproject.org/	SKMEL28	DOID:1909
-https://www.lincsproject.org/	SNGM	DOID:363
-https://www.lincsproject.org/	SNU1040	DOID:1520
-https://www.lincsproject.org/	SNUC4	DOID:1520
-https://www.lincsproject.org/	SNUC5	DOID:1520
-https://www.lincsproject.org/	SW480	DOID:1520
-https://www.lincsproject.org/	SW620	DOID:1520
-https://www.lincsproject.org/	SW948	DOID:1520
-https://www.lincsproject.org/	T3M10	DOID:1324
-https://www.lincsproject.org/	THP1	DOID:1240
-https://www.lincsproject.org/	TYKNU	DOID:4001
-https://www.lincsproject.org/	WSUDLCL2	DOID:0060058
-https://www.lincsproject.org/	HUH7	DOID:305
-https://www.lincsproject.org/	SHSY5Y	DOID:769
-https://www.lincsproject.org/	BT20	DOID:3459
-https://www.lincsproject.org/	HS578T	DOID:3459
-https://www.lincsproject.org/	MCF10A	DOID:3459
-https://www.lincsproject.org/	MDAMB231	DOID:3459
-https://www.lincsproject.org/	SKBR3	DOID:3459
-https://www.lincsproject.org/	JURKAT	DOID:1240
-https://www.lincsproject.org/	NCIH716	DOID:1520
-https://www.lincsproject.org/	U2OS	DOID:3347
-https://www.lincsproject.org/	A375.311	DOID:1909
-https://www.lincsproject.org/	A549.311	DOID:1324
-https://www.lincsproject.org/	HELA.311	DOID:3702
-https://www.lincsproject.org/	HME1	DOID:1240
-https://www.lincsproject.org/	HT29.311	DOID:1520
-https://www.lincsproject.org/	LNCAP	DOID:10286
-https://www.lincsproject.org/	MCF7.101	DOID:3459
-https://www.lincsproject.org/	MCF7.311	DOID:3459
-https://www.lincsproject.org/	PC3.101	DOID:2526
-https://www.lincsproject.org/	PC3.311	DOID:2526
-https://www.lincsproject.org/	YAPC.311	DOID:4074
-https://www.lincsproject.org/	HELA	DOID:3702
-https://www.lincsproject.org/	YAPC	DOID:4074
-https://www.lincsproject.org/	H1975	DOID:1324
-https://www.lincsproject.org/	NCIH1975	DOID:1324
-https://www.lincsproject.org/	SUDHL4	DOID:0060058
-https://www.lincsproject.org/	BJAB	DOID:0060058
-https://www.lincsproject.org/	HBL1	DOID:0060058
-https://www.lincsproject.org/	K562	DOID:1240
-https://www.lincsproject.org/	KMS34	DOID:0070004
-https://www.lincsproject.org/	MINO	DOID:0060058
-https://www.lincsproject.org/	NALM6	DOID:1240
-https://www.lincsproject.org/	OCILY10	DOID:0060058
-https://www.lincsproject.org/	OCILY19	DOID:0060058
-https://www.lincsproject.org/	OCILY3	DOID:0060058
-https://www.lincsproject.org/	SKMEL5	DOID:1909
-https://www.lincsproject.org/	TMD8	DOID:0060058
-https://www.lincsproject.org/	22RV1	DOID:10286
-https://www.lincsproject.org/	A204	DOID:4051
-https://www.lincsproject.org/	BC3C	DOID:4006
-https://www.lincsproject.org/	BEN	DOID:1324
-https://www.lincsproject.org/	BICR6	DOID:305
-https://www.lincsproject.org/	BT474	DOID:3459
-https://www.lincsproject.org/	CAL29	DOID:4006
-https://www.lincsproject.org/	CJM	DOID:1909
-https://www.lincsproject.org/	COV434	DOID:2999
-https://www.lincsproject.org/	ES2	DOID:4001
-https://www.lincsproject.org/	G401	DOID:305
-https://www.lincsproject.org/	GI1	DOID:3068
-https://www.lincsproject.org/	GP2D	DOID:1520
-https://www.lincsproject.org/	HCC1588	DOID:1324
-https://www.lincsproject.org/	HCC95	DOID:1324
-https://www.lincsproject.org/	HEC151	DOID:363
-https://www.lincsproject.org/	HEC1A	DOID:363
-https://www.lincsproject.org/	HEC251	DOID:363
-https://www.lincsproject.org/	HEC265	DOID:363
-https://www.lincsproject.org/	IGR37	DOID:1909
-https://www.lincsproject.org/	IM95	DOID:3717
-https://www.lincsproject.org/	JHH5	DOID:305
-https://www.lincsproject.org/	JHH7	DOID:305
-https://www.lincsproject.org/	LNCAP.FGC	DOID:10286
-https://www.lincsproject.org/	MDAMB468	DOID:3459
-https://www.lincsproject.org/	MELHO	DOID:1909
-https://www.lincsproject.org/	MKN45	DOID:3717
-https://www.lincsproject.org/	NCIH1437	DOID:1324
-https://www.lincsproject.org/	NCIH1573	DOID:1324
-https://www.lincsproject.org/	NCIH2110	DOID:1324
-https://www.lincsproject.org/	NCIH2172	DOID:1324
-https://www.lincsproject.org/	NCIH838	DOID:1324
-https://www.lincsproject.org/	NCIH841	DOID:1324
-https://www.lincsproject.org/	OAW28	DOID:3605
-https://www.lincsproject.org/	OC316	DOID:3713
-https://www.lincsproject.org/	OVK18	DOID:4001
-https://www.lincsproject.org/	OVTOKO	DOID:3713
-https://www.lincsproject.org/	RCC10RGB	DOID:305
-https://www.lincsproject.org/	SH4	DOID:1909
-https://www.lincsproject.org/	SKES1	DOID:3247
-https://www.lincsproject.org/	SKMEL3	DOID:1909
-https://www.lincsproject.org/	SNU407	DOID:1520
-https://www.lincsproject.org/	T47D	DOID:3459
-https://www.lincsproject.org/	TC32	DOID:3247
-https://www.lincsproject.org/	TOV112D	DOID:363
-https://www.lincsproject.org/	U251MG	DOID:3069
-https://www.lincsproject.org/	YH13	DOID:3069
-https://www.lincsproject.org/	ZR751	DOID:3459
-https://www.lincsproject.org/	MCF10A.TP53.M	DOID:3459
-https://www.lincsproject.org/	MCF10A.WT.HP	DOID:3459
-https://www.lincsproject.org/	DU145	DOID:10286
-https://www.lincsproject.org/	CW2	DOID:1520
-https://www.lincsproject.org/	MFE319	DOID:363
-https://www.lincsproject.org/	OC314	DOID:4001
-https://www.lincsproject.org/	VMCUB1	DOID:4006
-https://www.lincsproject.org/	5637	DOID:4007
-https://www.lincsproject.org/	AN3CA	DOID:363
-https://www.lincsproject.org/	HCC827	DOID:1324
-https://www.lincsproject.org/	J82	DOID:4007
-https://www.lincsproject.org/	LN229	DOID:3069
-https://www.lincsproject.org/	OVCAR8	DOID:4001
-https://www.lincsproject.org/	HCC44	DOID:1324
-https://www.lincsproject.org/	MCF10A.EGFR.HD	DOID:3459
-https://www.lincsproject.org/	MCF10A.EGFR.HL	DOID:3459
-https://www.lincsproject.org/	MCF10A.IDH1.HR	DOID:3459
-https://www.lincsproject.org/	MCF10A.PTEN.M	DOID:3459
-https://www.lincsproject.org/	MCF10A.WTHP	DOID:3459
-https://www.lincsproject.org/	MCF10A.WTLP.GM	DOID:3459
-https://www.lincsproject.org/	MCF10A.WTLP	DOID:3459
-https://www.lincsproject.org/	HCT116.TP53.HR	DOID:1520
-https://www.lincsproject.org/	HCT116.TP53.M	DOID:1520
-https://www.lincsproject.org/	HCT116.WT	DOID:1520
-https://www.lincsproject.org/	MCF10A.BRCA1.HD	DOID:3459
-https://www.lincsproject.org/	MCF10A.KRAS.HG	DOID:3459
-https://www.lincsproject.org/	MCF10A.TP53.M.EGFR.HL	DOID:3459
-https://www.lincsproject.org/	MCF10A.TP53.M.KRAS.HG	DOID:3459
-https://www.lincsproject.org/	MCF10A.PIK3CA.HH	DOID:3459
-https://www.lincsproject.org/	MCF10A.WT	DOID:3459
-https://www.lincsproject.org/	HUH751	DOID:684
-https://www.lincsproject.org/	HAP1.BRD4	DOID:8552
-https://www.lincsproject.org/	HAP1.CDK4	DOID:8552
-https://www.lincsproject.org/	HAP1.HDAC5	DOID:8552
-https://www.lincsproject.org/	HAP1.ITGA4	DOID:8552
-https://www.lincsproject.org/	HAP1.MAPK8	DOID:8552
-https://www.lincsproject.org/	HAP1.PIK3CA	DOID:8552
-https://www.lincsproject.org/	HAP1.PRKACA	DOID:8552
-https://www.lincsproject.org/	HAP1.PRKCQ	DOID:8552
-https://www.lincsproject.org/	HAP1.RELA	DOID:8552
-https://www.lincsproject.org/	HAP1.SRC	DOID:8552
-https://www.lincsproject.org/	HAP1.TP53	DOID:8552
-https://www.lincsproject.org/	HAP1	DOID:8552
-https://www.lincsproject.org/	DLD1	DOID:1520
-https://www.lincsproject.org/	SALE	DOID:1324
-https://www.lincsproject.org/	SKNSH	DOID:769
-https://www.lincsproject.org/	AGS.311	DOID:3717
-https://www.lincsproject.org/	BICR6.311	DOID:305
-https://www.lincsproject.org/	ES2.311	DOID:4001
-https://www.lincsproject.org/	PC3.311B	DOID:2526
-https://www.lincsproject.org/	U251MG.311	DOID:3069
-https://www.lincsproject.org/	DANG.311	DOID:4074
-https://www.lincsproject.org/	HCC1806.311	DOID:3459
-https://www.lincsproject.org/	HS944T.311	DOID:1909
-https://www.lincsproject.org/	IPC298.311	DOID:1909
-https://www.lincsproject.org/	KELLY.311	DOID:769
-https://www.lincsproject.org/	KYSE30.311	DOID:1107
-https://www.lincsproject.org/	LCLC103H.311	DOID:1324
-https://www.lincsproject.org/	SNGM.311	DOID:363
-https://www.lincsproject.org/	SNU761.311	DOID:684
-https://www.lincsproject.org/	TF1	DOID:1240
+subject_id_namespace	subject_local_id	association_type	disease
+https://www.lincsproject.org/	HL60	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	PC3	cfde_disease_association_type:0	DOID:2526
+https://www.lincsproject.org/	U937	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	MCF7	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	A375	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	HCC515	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	VCAP	cfde_disease_association_type:0	DOID:2526
+https://www.lincsproject.org/	HEPG2	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	HT29	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	A549	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	A673	cfde_disease_association_type:0	DOID:3247
+https://www.lincsproject.org/	AGS	cfde_disease_association_type:0	DOID:3717
+https://www.lincsproject.org/	CL34	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	CORL23	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	COV644	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	DV90	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	EFO27	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	H1299	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	HCC15	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	HCT116	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	HEC108	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	HT115	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	JHUEM2	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	LOVO	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	MDST8	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	NCIH1694	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH1836	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH2073	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH508	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	NCIH596	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NOMO1	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	OV7	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	PL21	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	RKO	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	RMGI	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	RMUGS	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	SKLU1	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	SKM1	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	SKMEL1	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	SKMEL28	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	SNGM	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	SNU1040	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	SNUC4	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	SNUC5	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	SW480	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	SW620	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	SW948	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	T3M10	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	THP1	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	TYKNU	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	WSUDLCL2	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	HUH7	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	SHSY5Y	cfde_disease_association_type:0	DOID:769
+https://www.lincsproject.org/	BT20	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	HS578T	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MDAMB231	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	SKBR3	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	JURKAT	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	NCIH716	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	U2OS	cfde_disease_association_type:0	DOID:3347
+https://www.lincsproject.org/	A375.311	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	A549.311	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	HELA.311	cfde_disease_association_type:0	DOID:3702
+https://www.lincsproject.org/	HME1	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	HT29.311	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	LNCAP	cfde_disease_association_type:0	DOID:10286
+https://www.lincsproject.org/	MCF7.101	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF7.311	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	PC3.101	cfde_disease_association_type:0	DOID:2526
+https://www.lincsproject.org/	PC3.311	cfde_disease_association_type:0	DOID:2526
+https://www.lincsproject.org/	YAPC.311	cfde_disease_association_type:0	DOID:4074
+https://www.lincsproject.org/	HELA	cfde_disease_association_type:0	DOID:3702
+https://www.lincsproject.org/	YAPC	cfde_disease_association_type:0	DOID:4074
+https://www.lincsproject.org/	H1975	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH1975	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	SUDHL4	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	BJAB	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	HBL1	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	K562	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	KMS34	cfde_disease_association_type:0	DOID:0070004
+https://www.lincsproject.org/	MINO	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	NALM6	cfde_disease_association_type:0	DOID:1240
+https://www.lincsproject.org/	OCILY10	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	OCILY19	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	OCILY3	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	SKMEL5	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	TMD8	cfde_disease_association_type:0	DOID:0060058
+https://www.lincsproject.org/	22RV1	cfde_disease_association_type:0	DOID:10286
+https://www.lincsproject.org/	A204	cfde_disease_association_type:0	DOID:4051
+https://www.lincsproject.org/	BC3C	cfde_disease_association_type:0	DOID:4006
+https://www.lincsproject.org/	BEN	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	BICR6	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	BT474	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	CAL29	cfde_disease_association_type:0	DOID:4006
+https://www.lincsproject.org/	CJM	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	COV434	cfde_disease_association_type:0	DOID:2999
+https://www.lincsproject.org/	ES2	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	G401	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	GI1	cfde_disease_association_type:0	DOID:3068
+https://www.lincsproject.org/	GP2D	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	HCC1588	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	HCC95	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	HEC151	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	HEC1A	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	HEC251	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	HEC265	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	IGR37	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	IM95	cfde_disease_association_type:0	DOID:3717
+https://www.lincsproject.org/	JHH5	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	JHH7	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	LNCAP.FGC	cfde_disease_association_type:0	DOID:10286
+https://www.lincsproject.org/	MDAMB468	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MELHO	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	MKN45	cfde_disease_association_type:0	DOID:3717
+https://www.lincsproject.org/	NCIH1437	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH1573	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH2110	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH2172	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH838	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	NCIH841	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	OAW28	cfde_disease_association_type:0	DOID:3605
+https://www.lincsproject.org/	OC316	cfde_disease_association_type:0	DOID:3713
+https://www.lincsproject.org/	OVK18	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	OVTOKO	cfde_disease_association_type:0	DOID:3713
+https://www.lincsproject.org/	RCC10RGB	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	SH4	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	SKES1	cfde_disease_association_type:0	DOID:3247
+https://www.lincsproject.org/	SKMEL3	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	SNU407	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	T47D	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	TC32	cfde_disease_association_type:0	DOID:3247
+https://www.lincsproject.org/	TOV112D	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	U251MG	cfde_disease_association_type:0	DOID:3069
+https://www.lincsproject.org/	YH13	cfde_disease_association_type:0	DOID:3069
+https://www.lincsproject.org/	ZR751	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.TP53.M	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.WT.HP	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	DU145	cfde_disease_association_type:0	DOID:10286
+https://www.lincsproject.org/	CW2	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	MFE319	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	OC314	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	VMCUB1	cfde_disease_association_type:0	DOID:4006
+https://www.lincsproject.org/	5637	cfde_disease_association_type:0	DOID:4007
+https://www.lincsproject.org/	AN3CA	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	HCC827	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	J82	cfde_disease_association_type:0	DOID:4007
+https://www.lincsproject.org/	LN229	cfde_disease_association_type:0	DOID:3069
+https://www.lincsproject.org/	OVCAR8	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	HCC44	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	MCF10A.EGFR.HD	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.EGFR.HL	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.IDH1.HR	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.PTEN.M	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.WTHP	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.WTLP.GM	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.WTLP	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	HCT116.TP53.HR	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	HCT116.TP53.M	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	HCT116.WT	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	MCF10A.BRCA1.HD	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.KRAS.HG	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.TP53.M.EGFR.HL	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.TP53.M.KRAS.HG	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.PIK3CA.HH	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	MCF10A.WT	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	HUH751	cfde_disease_association_type:0	DOID:684
+https://www.lincsproject.org/	HAP1.BRD4	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.CDK4	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.HDAC5	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.ITGA4	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.MAPK8	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.PIK3CA	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.PRKACA	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.PRKCQ	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.RELA	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.SRC	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1.TP53	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	HAP1	cfde_disease_association_type:0	DOID:8552
+https://www.lincsproject.org/	DLD1	cfde_disease_association_type:0	DOID:1520
+https://www.lincsproject.org/	SALE	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	SKNSH	cfde_disease_association_type:0	DOID:769
+https://www.lincsproject.org/	AGS.311	cfde_disease_association_type:0	DOID:3717
+https://www.lincsproject.org/	BICR6.311	cfde_disease_association_type:0	DOID:305
+https://www.lincsproject.org/	ES2.311	cfde_disease_association_type:0	DOID:4001
+https://www.lincsproject.org/	PC3.311B	cfde_disease_association_type:0	DOID:2526
+https://www.lincsproject.org/	U251MG.311	cfde_disease_association_type:0	DOID:3069
+https://www.lincsproject.org/	DANG.311	cfde_disease_association_type:0	DOID:4074
+https://www.lincsproject.org/	HCC1806.311	cfde_disease_association_type:0	DOID:3459
+https://www.lincsproject.org/	HS944T.311	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	IPC298.311	cfde_disease_association_type:0	DOID:1909
+https://www.lincsproject.org/	KELLY.311	cfde_disease_association_type:0	DOID:769
+https://www.lincsproject.org/	KYSE30.311	cfde_disease_association_type:0	DOID:1107
+https://www.lincsproject.org/	LCLC103H.311	cfde_disease_association_type:0	DOID:1324
+https://www.lincsproject.org/	SNGM.311	cfde_disease_association_type:0	DOID:363
+https://www.lincsproject.org/	SNU761.311	cfde_disease_association_type:0	DOID:684
+https://www.lincsproject.org/	TF1	cfde_disease_association_type:0	DOID:1240
